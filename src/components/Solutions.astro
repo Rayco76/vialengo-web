@@ -1,0 +1,10 @@
+---
+const solutions = [
+  ['01', 'WhatsApp + citas', 'Respuesta automática 24/7, detección de intención, solicitud y gestión de citas, integración con calendario y derivación a humano cuando sea necesario.'],
+  ['02', 'Captación local', 'Google Business, SEO local, optimización web y canales de adquisición adecuados para cada clínica.'],
+  ['03', 'Content Engine', 'Contenido para redes, reutilización de materiales reales y apoyo de IA para equipos que no quieren estar siempre ante cámara.'],
+  ['04', 'Retención y reputación', 'Recordatorios, solicitud de reseñas, reactivación y seguimiento de pacientes.'],
+  ['05', 'Analytics', 'Conversaciones, solicitudes de cita, citas creadas, conversión, actividad fuera de horario y pérdidas del funnel.'],
+];
+---
+<section class="section solutions-section" id="soluciones" aria-labelledby="solutions-title"><div class="container"><p class="eyebrow">Soluciones</p><h2 id="solutions-title">Cada parte del crecimiento,<br />trabajando en la misma dirección.</h2><div class="solutions-grid">{solutions.map(([number, title, text]) => <article class="solution-card"><span>{number}</span><h3>{title}</h3><p>{text}</p><a href="#auditoria" aria-label={`Consultar ${title}`}>Consultar <b aria-hidden="true">→</b></a></article>)}</div><p class="modules-note">Los módulos se adaptan a las necesidades de cada clínica.</p></div></section>

@@ -1,0 +1,43 @@
+---
+import { siteConfig } from '../config/site';
+---
+<form class="audit-form" id="audit-form" novalidate data-endpoint={siteConfig.formEndpoint} data-turnstile-key={siteConfig.turnstileSiteKey}>
+  <div class="form-grid">
+    <label>Nombre<input name="name" autocomplete="name" required /></label>
+    <label>Clínica<input name="clinic" autocomplete="organization" required /></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+    <label>Teléfono <em>Opcional</em><input name="phone" type="tel" autocomplete="tel" /></label>
+  </div>
+  <label>Web <em>Opcional</em><input name="website" type="url" autocomplete="url" placeholder="https://" /></label>
+  <label>¿Qué te gustaría mejorar? <em>Opcional</em><textarea name="message" rows="4"></textarea></label>
+  <label class="consent"><input name="privacy" type="checkbox" required /><span>Acepto el tratamiento de mis datos para responder a esta solicitud. <a href="/privacidad">Consulta la política de privacidad.</a></span></label>
+  {siteConfig.turnstileSiteKey && <div class="turnstile-placeholder" data-turnstile-sitekey={siteConfig.turnstileSiteKey}>La verificación anti-spam se activará al configurar Turnstile.</div>}
+  <button class="button" type="submit">Solicitar auditoría gratuita</button>
+  <p class="form-status" aria-live="polite"></p>
+</form>
+<script>
+  import { trackEvent } from '../lib/analytics';
+  const form = document.querySelector<HTMLFormElement>('#audit-form');
+  const status = form?.querySelector<HTMLElement>('.form-status');
+  let started = false;
+  form?.addEventListener('focusin', () => { if (!started) { started = true; trackEvent('audit_form_started'); } });
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const endpoint = form.dataset.endpoint;
+    const submit = form.querySelector<HTMLButtonElement>('[type="submit"]');
+    submit!.disabled = true;
+    status.textContent = endpoint ? 'Enviando solicitud…' : 'Modo desarrollo: solicitud validada. Configura PUBLIC_AUDIT_FORM_ENDPOINT para recibirla.';
+    if (!endpoint) { submit!.disabled = false; trackEvent('audit_form_submitted', { mode: 'mock' }); return; }
+    try {
+      const response = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('request failed');
+      form.reset();
+      status.textContent = 'Gracias. Hemos recibido tu solicitud y te contactaremos pronto.';
+      trackEvent('audit_form_submitted');
+    } catch {
+      status.textContent = 'No hemos podido enviar la solicitud. Inténtalo de nuevo o contáctanos más tarde.';
+    } finally { submit!.disabled = false; }
+  });
+</script>

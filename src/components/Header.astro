@@ -1,0 +1,24 @@
+---
+import { siteConfig } from '../config/site';
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${siteConfig.name}, inicio`}>
+      <span class="brand-mark" aria-hidden="true">+</span><span>{siteConfig.name}</span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#soluciones">Soluciones</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="button button-small" data-track-cta href="#auditoria">Solicitar auditoría<span class="sr-only"> gratuita</span></a>
+    <details class="mobile-menu">
+      <summary><span class="sr-only">Abrir menú</span><span aria-hidden="true">☰</span></summary>
+      <nav aria-label="Principal móvil">
+        <a href="#soluciones">Soluciones</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import GrowthLoop from '../components/GrowthLoop.astro';
+import Solutions from '../components/Solutions.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import ToolsPreview from '../components/ToolsPreview.astro';
+import AuditCTA from '../components/AuditCTA.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout><Header /><main><Hero /><ProblemSection /><GrowthLoop /><Solutions /><HowItWorks /><CaseStudy /><ToolsPreview /><AuditCTA /><FAQ /></main><Footer />
+  <script>
+    import { trackEvent } from '../lib/analytics';
+    trackEvent('page_view');
+    document.querySelectorAll<HTMLElement>('[data-track-cta]').forEach((item) => item.addEventListener('click', () => trackEvent('cta_click')));
+    const sent = new Set<number>();
+    addEventListener('scroll', () => { const max = document.documentElement.scrollHeight - innerHeight; const progress = max > 0 ? scrollY / max : 0; [[.5, 'scroll_50'], [.9, 'scroll_90']].forEach(([threshold, event]) => { if (progress >= Number(threshold) && !sent.has(Number(threshold))) { sent.add(Number(threshold)); trackEvent(event as 'scroll_50' | 'scroll_90'); } }); }, { passive: true });
+  </script>
+</BaseLayout>
