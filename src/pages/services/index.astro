@@ -1,4 +1,68 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { solutions } from '../../content/solutions';
+import { integrations } from '../../content/integrations';
+import { processSteps } from '../../content/process';
+import { serviceNodes } from '../../lib/jsonld';
+
+const description = 'Servicios de Vialengo: presencia digital, redes sociales, WhatsApp y atención, citas y agenda, reputación y automatización con IA para negocios locales.';
+const groups = [
+  ['Disponibles', integrations.available],
+  ['Dependen del software del negocio', integrations.dependent],
+  ['En desarrollo', integrations.future],
+] as const;
 ---
-<BaseLayout title="Soluciones | Clinic Growth OS"><main class="placeholder-page"><h1>Soluciones para clínicas</h1><p>Esta sección estará disponible próximamente.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<BaseLayout title="Servicios" description={description} path="/services/" markdown="/services.md" schemaType="CollectionPage" jsonLd={serviceNodes()}>
+  <main id="contenido">
+    <PageHeader eyebrow="Servicios" title="Un sistema de crecimiento local, hecho a medida." intro="Estas son las áreas en las que trabaja Vialengo. No se contratan como herramientas aisladas: se combinan según lo que cada negocio necesita." />
+
+    <div class="container service-index">
+      <nav aria-label="Servicios"><ul>{solutions.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}</ul></nav>
+    </div>
+
+    {solutions.map((s, i) => (
+      <section class:list={['section service-block', { alt: i % 2 === 1 }]} id={s.id} aria-labelledby={`${s.id}-title`}>
+        <div class="container service-layout">
+          <div>
+            <p class="eyebrow">0{i + 1}</p>
+            <h2 id={`${s.id}-title`}>{s.title}</h2>
+            <p class="section-intro">{s.summary}</p>
+          </div>
+          <div>
+            <h3>Qué incluye</h3>
+            <ul class="check-list">{s.includes.map((item) => <li>{item}</li>)}</ul>
+            {s.depends && <p class="note"><strong>Conviene saber:</strong> {s.depends}</p>}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="section integrations-section" id="integraciones" aria-labelledby="integraciones-title">
+      <div class="container">
+        <p class="eyebrow">Agenda e integraciones</p>
+        <h2 id="integraciones-title">Qué se conecta hoy y qué no.</h2>
+        <p class="section-intro">No hay una integración universal. Esto es lo que ofrecemos, separado por estado.</p>
+        <div class="integration-groups">
+          {groups.map(([title, items]) => (
+            <div>
+              <h3>{title}</h3>
+              <ul>{items.map((item) => <li><strong>{item.name}</strong><span>{item.detail}</span></li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow-section" id="proceso" aria-labelledby="proceso-title">
+      <div class="container">
+        <p class="eyebrow">Proceso de trabajo</p>
+        <h2 id="proceso-title">Cómo trabajamos contigo.</h2>
+        <ol class="steps">{processSteps.map((step, i) => <li><span>{i + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}</ol>
+      </div>
+    </section>
+
+    <CtaBand />
+  </main>
+</BaseLayout>

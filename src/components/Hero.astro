@@ -1,24 +1,46 @@
+---
+import Icon from './Icon.astro';
+import { href } from '../lib/url';
+
+// Flujo de ejemplo fiel a lo que hace el sistema hoy: el asistente recoge la solicitud y
+// recepción propone el horario. No mostrar aquí nada que todavía no exista.
+const flow = [
+  { icon: 'MessageCircle', title: 'Mensaje recibido', text: '«¿Tenéis hueco el jueves por la tarde?»' },
+  { icon: 'CalendarCheck', title: 'Solicitud de cita', text: 'Clasificada, con los datos ya recogidos.' },
+  { icon: 'Users', title: 'Recepción', text: 'Propone el horario y confirma la cita.' },
+] as const;
+const system = [
+  { icon: 'Search', label: 'Google' },
+  { icon: 'Globe', label: 'Web' },
+  { icon: 'MessageCircle', label: 'WhatsApp' },
+  { icon: 'CalendarCheck', label: 'Agenda' },
+  { icon: 'Users', label: 'Cliente' },
+  { icon: 'Star', label: 'Reseña' },
+] as const;
+---
 <section class="hero" aria-labelledby="hero-title">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Sistemas de crecimiento para clínicas dentales</p>
-      <h1 id="hero-title">Convierte más consultas en pacientes.</h1>
-      <p class="lead">Ayudamos a clínicas dentales a captar, convertir y retener más pacientes combinando automatización, WhatsApp, contenido y medición.</p>
+      <p class="eyebrow">Para negocios locales</p>
+      <h1 id="hero-title">Tecnología que hace crecer tu negocio.</h1>
+      <p class="lead">Conectamos tu web, Google, WhatsApp, agenda y reseñas para que tu negocio fluya mejor. Respondemos automáticamente las preguntas más frecuentes de tus clientes y tu equipo se dedica a atenderlos.</p>
       <div class="hero-actions">
-        <a class="button" data-track-cta href="#auditoria">Solicitar auditoría gratuita</a>
-        <a class="text-link" href="#como-funciona">Ver cómo funciona <span aria-hidden="true">→</span></a>
+        <a class="button" data-track-cta href="#auditoria">Solicitar auditoría</a>
+        <a class="text-link" href={href('/services/')}>Ver soluciones <Icon name="ArrowRight" size={16} /></a>
       </div>
-      <p class="trust-line"><span aria-hidden="true">✦</span> Pensado para clínicas independientes que quieren crecer sin añadir más trabajo administrativo.</p>
     </div>
-    <div class="hero-panel" aria-label="Vista del sistema de crecimiento">
-      <div class="panel-top"><span>Vista general</span><span class="status"><i></i> Sistema activo</span></div>
-      <div class="panel-body">
-        <div class="patient-row"><span class="avatar">M</span><div><strong>Nueva consulta</strong><small>WhatsApp · hace 2 min</small></div><span class="tag">Atendida</span></div>
-        <div class="flow-line"></div>
-        <div class="mini-grid"><div><small>Conversaciones</small><strong>Organizadas</strong></div><div><small>Seguimiento</small><strong>Conectado</strong></div></div>
-        <div class="patient-row soft"><span class="avatar mint">A</span><div><strong>Solicitud de cita</strong><small>Fuera de horario</small></div><span class="tag mint-tag">Derivada</span></div>
-      </div>
-      <p class="panel-caption">Una visión clara de cada punto de contacto.</p>
-    </div>
+    <figure class="hero-panel" aria-label="Ilustración: una consulta por WhatsApp se convierte en una solicitud de cita">
+      <ol class="flow">
+        {flow.map((step) => (
+          <li><span class="flow-icon"><Icon name={step.icon} size={18} /></span><div><strong>{step.title}</strong><span>{step.text}</span></div></li>
+        ))}
+      </ol>
+      <figcaption>Ilustración orientativa de cómo avanza una consulta.</figcaption>
+    </figure>
+  </div>
+  <div class="container">
+    <ol class="system-strip" aria-label="Las partes que Vialengo conecta">
+      {system.map((node) => <li><span class="flow-icon"><Icon name={node.icon} size={18} /></span>{node.label}</li>)}
+    </ol>
   </div>
 </section>

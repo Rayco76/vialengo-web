@@ -1,0 +1,16 @@
+---
+const items = [
+  ['Cómo te encuentran', 'Ficha de Google, web y redes.'],
+  ['Cómo atiendes', 'Tiempos de respuesta, horarios y fuera de horario.'],
+  ['Cómo gestionas las citas', 'Agenda, herramientas y pasos manuales.'],
+  ['Cómo haces el seguimiento', 'Recordatorios, reactivación y reseñas.'],
+  ['Qué mides hoy', 'Qué datos tienes y cuáles faltan.'],
+  ['Qué tiene sentido automatizar', 'Y qué es mejor que siga haciéndolo una persona.'],
+];
+---
+<section class="section scope-section" aria-labelledby="scope-title">
+  <div class="container">
+    <div class="tools-heading"><div><p class="eyebrow">Auditoría inicial</p><h2 id="scope-title">Qué revisamos<br />en la auditoría</h2></div><p>Una conversación para entender tu negocio y valorar si tiene sentido trabajar juntos. Sin compromiso.</p></div>
+    <ul class="scope-grid">{items.map(([title, text]) => <li><h3>{title}</h3><p>{text}</p></li>)}</ul>
+  </div>
+</section>

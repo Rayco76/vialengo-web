@@ -1,13 +1,35 @@
 ---
+import Icon from './Icon.astro';
+import { href } from '../lib/url';
+
+const fragments = [
+  { icon: 'Search', label: 'Google' },
+  { icon: 'Share2', label: 'Redes' },
+  { icon: 'MessageCircle', label: 'WhatsApp' },
+  { icon: 'CalendarCheck', label: 'Agenda' },
+  { icon: 'Star', label: 'Reseñas' },
+] as const;
 const problems = [
-  ['Consultas que llegan y no terminan en cita', 'WhatsApp, teléfono, formularios y mensajes que se enfrían antes de reservar.'],
-  ['Pacientes que escriben fuera de horario', 'Una oportunidad puede aparecer cuando recepción ya está cerrada.'],
-  ['Seguimiento manual', 'Recordatorios, reseñas, reactivación y seguimiento consumen tiempo del equipo.'],
-  ['Marketing sin una medición clara', 'La clínica invierte en diferentes canales pero no sabe cuáles generan realmente citas.'],
+  ['Consultas que no terminan en cita', 'Mensajes que se enfrían antes de convertirse en cliente.'],
+  ['Mensajes fuera de horario', 'Una oportunidad puede llegar cuando ya has cerrado.'],
+  ['Seguimiento manual', 'Recordatorios, reseñas y reactivación consumen tiempo del equipo.'],
+  ['Presencia sin medición', 'No se sabe qué canal trae clientes de verdad.'],
 ];
 ---
 <section class="section problem-section" aria-labelledby="problema-title">
-  <div class="container"><p class="eyebrow">El problema</p><h2 id="problema-title">No siempre hacen falta más leads.<br />Muchas veces hay que perder menos.</h2>
-    <div class="problem-grid">{problems.map(([title, text], index) => <article class="problem-card"><span class="card-number">0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+  <div class="container">
+    <p class="eyebrow">El problema</p>
+    <h2 id="problema-title">Todo funciona por separado.</h2>
+    <p class="section-intro">Google, redes, WhatsApp, agenda y reseñas suelen vivir cada uno por su lado. Tu cliente lo nota. Tu equipo también.</p>
+    <div class="fragments" role="img" aria-label="Google, redes, WhatsApp, agenda y reseñas, hoy separados, se conectan en Vialengo">
+      <ul class="fragment-list" aria-hidden="true">
+        {fragments.map((f) => <li><Icon name={f.icon} size={18} />{f.label}</li>)}
+      </ul>
+      <svg class="fan" viewBox="0 0 160 330" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        {[0, 1, 2, 3, 4].map((i) => <path d={`M0 ${33 + i * 66} C80 ${33 + i * 66}, 80 165, 160 165`} />)}
+      </svg>
+      <div class="fragment-hub" aria-hidden="true"><img src={href('/brand/vialengo-symbol-on-dark.svg')} alt="" width="52" height="42" /><strong>Vialengo</strong><span>Todo conectado</span></div>
+    </div>
+    <ul class="problem-grid">{problems.map(([title, text]) => <li><h3>{title}</h3><p>{text}</p></li>)}</ul>
   </div>
 </section>

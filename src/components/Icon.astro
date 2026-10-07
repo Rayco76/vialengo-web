@@ -1,0 +1,22 @@
+---
+// Iconos Lucide (lineales, trazo uniforme). Solo se importan los que se usan.
+import MapPin from '@lucide/astro/icons/map-pin';
+import Share2 from '@lucide/astro/icons/share-2';
+import MessageCircle from '@lucide/astro/icons/message-circle';
+import CalendarCheck from '@lucide/astro/icons/calendar-check';
+import Star from '@lucide/astro/icons/star';
+import Workflow from '@lucide/astro/icons/workflow';
+import Search from '@lucide/astro/icons/search';
+import Globe from '@lucide/astro/icons/globe';
+import Users from '@lucide/astro/icons/users';
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import Check from '@lucide/astro/icons/check';
+
+const icons = { MapPin, Share2, MessageCircle, CalendarCheck, Star, Workflow, Search, Globe, Users, ArrowRight, Check };
+export type IconName = keyof typeof icons;
+
+interface Props { name: IconName; size?: number }
+const { name, size = 20 } = Astro.props;
+const Component = icons[name];
+---
+<Component size={size} stroke-width={1.75} aria-hidden="true" class="icon" />

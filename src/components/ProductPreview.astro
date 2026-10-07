@@ -1,0 +1,28 @@
+---
+import { href } from '../lib/url';
+// Capturas de la plataforma real con datos inventados (sin pacientes reales).
+// Mostrar solo funciones que existen. Para actualizarlas: ver ClinicOS_Work/Branding/IMPLEMENTACION_WEB.md.
+const shots = [
+  { src: '/product/inbox-solicitudes.webp', w: 430, h: 745, alt: 'Bandeja de solicitudes de cita: tres solicitudes con su estado, el tratamiento y los días preferidos, y botones para proponer horarios.', title: 'Las solicitudes llegan ordenadas', text: 'Cada consulta por WhatsApp se convierte en una solicitud con lo que recepción necesita para responder.' },
+  { src: '/product/conversacion-solicitud.webp', w: 430, h: 850, alt: 'Conversación de WhatsApp en la que el asistente recoge nombre, tratamiento y horario preferido, y recepción responde con tres horarios.', title: 'Recepción continúa la conversación', text: 'El asistente recoge los datos; el equipo propone el horario y confirma la cita.' },
+] as const;
+---
+<section class="section product-section" aria-labelledby="product-title">
+  <div class="container product-layout">
+    <div class="product-copy">
+      <p class="eyebrow">Por dentro</p>
+      <h2 id="product-title">Una conversación que termina en una cita.</h2>
+      <p class="section-intro">Así ve el equipo lo que llega por WhatsApp. El asistente atiende y ordena; las personas deciden y confirman.</p>
+      <p class="product-note">Capturas de la plataforma con datos de ejemplo. No son pacientes reales.</p>
+      <a class="text-link" href={href('/services/#whatsapp-atencion')}>Cómo funciona WhatsApp y atención <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="product-shots">
+      {shots.map((s) => (
+        <figure>
+          <img src={href(s.src)} width={s.w} height={s.h} alt={s.alt} loading="lazy" decoding="async" />
+          <figcaption><strong>{s.title}</strong><span>{s.text}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

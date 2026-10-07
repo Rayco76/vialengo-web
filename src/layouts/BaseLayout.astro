@@ -1,27 +1,69 @@
 ---
+// Fuentes autoalojadas (sin peticiones a Google). Solo se descargan los subconjuntos que la página usa.
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/inter';
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { siteConfig } from '../config/site';
+import { absoluteUrl, href } from '../lib/url';
+import { organization, toScript, webPage, website } from '../lib/jsonld';
 
-interface Props { title?: string; description?: string; }
-const { title = `${siteConfig.name} | ${siteConfig.tagline}`, description = siteConfig.description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
+interface Props {
+  /** Título de la página; se le añade " | Vialengo". Sin él se usa el de la Home. */
+  title?: string;
+  description?: string;
+  /** Ruta de la página (para canonical y JSON-LD), p. ej. "/services/". */
+  path?: string;
+  /** Ruta de la versión Markdown, si existe. */
+  markdown?: string;
+  /** Nodos JSON-LD adicionales de la página. */
+  jsonLd?: object[];
+  schemaType?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = siteConfig.description,
+  path = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/',
+  markdown,
+  jsonLd = [],
+  schemaType = 'WebPage',
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} | ${siteConfig.name}` : `${siteConfig.name} | ${siteConfig.tagline}`;
+const canonical = absoluteUrl(path);
+const graph = [organization(), website(), webPage(path, fullTitle, description, schemaType), ...jsonLd];
 ---
 <!doctype html>
-<html lang="es">
+<html lang={siteConfig.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
     <meta name="theme-color" content="#f7f8f6" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>{title}</title>
+    <link rel="icon" href={href('/favicon.svg')} type="image/svg+xml" />
+    <link rel="describedby" href={absoluteUrl('/llms.txt')} type="text/plain" title="llms.txt" />
+    {markdown && <link rel="alternate" type="text/markdown" href={absoluteUrl(markdown)} title="Versión en Markdown" />}
+    <script is:inline type="application/ld+json" set:html={toScript(graph)} />
   </head>
   <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>

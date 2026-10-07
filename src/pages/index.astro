@@ -1,18 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import ProblemSection from '../components/ProblemSection.astro';
 import GrowthLoop from '../components/GrowthLoop.astro';
 import Solutions from '../components/Solutions.astro';
+import ProductPreview from '../components/ProductPreview.astro';
+import Personalization from '../components/Personalization.astro';
+import Verticals from '../components/Verticals.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import CaseStudy from '../components/CaseStudy.astro';
-import ToolsPreview from '../components/ToolsPreview.astro';
+import AuditScope from '../components/AuditScope.astro';
 import AuditCTA from '../components/AuditCTA.astro';
 import FAQ from '../components/FAQ.astro';
-import Footer from '../components/Footer.astro';
 ---
-<BaseLayout><Header /><main><Hero /><ProblemSection /><GrowthLoop /><Solutions /><HowItWorks /><CaseStudy /><ToolsPreview /><AuditCTA /><FAQ /></main><Footer />
+<BaseLayout path="/" markdown="/index.md">
+  <main id="contenido"><Hero /><ProblemSection /><GrowthLoop /><Solutions /><ProductPreview /><Personalization /><Verticals /><HowItWorks /><CaseStudy /><AuditScope /><AuditCTA /><FAQ /></main>
   <script>
     import { trackEvent } from '../lib/analytics';
     trackEvent('page_view');

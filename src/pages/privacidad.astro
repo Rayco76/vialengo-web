@@ -1,4 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPage from '../components/LegalPage.astro';
+import Pending from '../components/Pending.astro';
+import { siteConfig } from '../config/site';
+
 ---
-<BaseLayout title="Privacidad | Clinic Growth OS"><main class="placeholder-page"><h1>Política de privacidad</h1><p>Contenido legal pendiente de completar antes de publicar.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<BaseLayout title="Política de privacidad" description="Política de privacidad de Vialengo (borrador pendiente de los datos del titular)." path="/privacidad/">
+  <main id="contenido">
+    <LegalPage title="Política de privacidad" intro="Qué datos recoge este sitio y para qué. Documento en preparación.">
+      <section aria-labelledby="datos">
+        <h2 id="datos">Qué datos recoge el formulario de auditoría</h2>
+        <ul>
+          <li>Nombre, nombre del negocio y email (obligatorios).</li>
+          <li>Teléfono, web y un mensaje libre (opcionales).</li>
+        </ul>
+        <p>El formulario no solicita datos de salud ni datos de pacientes o clientes del negocio.</p>
+      </section>
+      <section aria-labelledby="finalidad">
+        <h2 id="finalidad">Finalidad</h2>
+        <p>Responder a la solicitud de auditoría enviada por la persona interesada.</p>
+      </section>
+      <section aria-labelledby="terceros">
+        <h2 id="terceros">Servicios de terceros que usa este sitio</h2>
+        <ul>
+          {siteConfig.form.turnstileSiteKey && <li>Cloudflare Turnstile: verificación anti-spam en el formulario.</li>}
+          <li>Servicio que recibe el formulario: <Pending /></li>
+        </ul>
+      </section>
+      <section aria-labelledby="pendiente">
+        <h2 id="pendiente">Resto del contenido</h2>
+        <ul>
+          <li>Base jurídica del tratamiento: <Pending /></li>
+          <li>Plazo de conservación: <Pending /></li>
+          <li>Destinatarios y transferencias internacionales: <Pending /></li>
+          <li>Derechos de las personas y cómo ejercerlos; reclamación ante la AEPD: <Pending /></li>
+        </ul>
+      </section>
+    </LegalPage>
+  </main>
+</BaseLayout>

@@ -1,10 +1,9 @@
 ---
-const solutions = [
-  ['01', 'WhatsApp + citas', 'Respuesta automática 24/7, detección de intención, solicitud y gestión de citas, integración con calendario y derivación a humano cuando sea necesario.'],
-  ['02', 'Captación local', 'Google Business, SEO local, optimización web y canales de adquisición adecuados para cada clínica.'],
-  ['03', 'Content Engine', 'Contenido para redes, reutilización de materiales reales y apoyo de IA para equipos que no quieren estar siempre ante cámara.'],
-  ['04', 'Retención y reputación', 'Recordatorios, solicitud de reseñas, reactivación y seguimiento de pacientes.'],
-  ['05', 'Analytics', 'Conversaciones, solicitudes de cita, citas creadas, conversión, actividad fuera de horario y pérdidas del funnel.'],
-];
+import Icon from './Icon.astro';
+import { solutions } from '../content/solutions';
+import { href } from '../lib/url';
 ---
-<section class="section solutions-section" id="soluciones" aria-labelledby="solutions-title"><div class="container"><p class="eyebrow">Soluciones</p><h2 id="solutions-title">Cada parte del crecimiento,<br />trabajando en la misma dirección.</h2><div class="solutions-grid">{solutions.map(([number, title, text]) => <article class="solution-card"><span>{number}</span><h3>{title}</h3><p>{text}</p><a href="#auditoria" aria-label={`Consultar ${title}`}>Consultar <b aria-hidden="true">→</b></a></article>)}</div><p class="modules-note">Los módulos se adaptan a las necesidades de cada clínica.</p></div></section>
+<section class="section solutions-section" id="soluciones" aria-labelledby="solutions-title"><div class="container"><p class="eyebrow">Soluciones</p><h2 id="solutions-title">Cada parte, en la misma dirección.</h2>
+  <div class="solutions-grid">{solutions.map((s) => <article class="solution-card"><span class="icon-box"><Icon name={s.icon} size={22} /></span><h3>{s.title}</h3><p>{s.short}</p><a href={href(`/services/#${s.id}`)} aria-label={`Más información sobre ${s.title}`}>Más información <Icon name="ArrowRight" size={15} /></a></article>)}</div>
+  <p class="modules-note">Algunas funciones dependen del software que use cada negocio, por ejemplo su agenda. Lo valoramos en la auditoría, sin prometer integraciones universales.</p>
+</div></section>

@@ -1,0 +1,11 @@
+---
+import { href } from '../lib/url';
+interface Props { title?: string; text?: string; }
+const { title = '¿Hablamos de tu negocio?', text = 'La auditoría inicial sirve para entender cómo trabajas y valorar si Vialengo encaja.' } = Astro.props;
+---
+<section class="section cta-band" aria-labelledby="cta-title">
+  <div class="container cta-inner">
+    <div><h2 id="cta-title">{title}</h2><p>{text}</p></div>
+    <a class="button button-light" data-track-cta href={href('/#auditoria')}>Solicitar auditoría</a>
+  </div>
+</section>

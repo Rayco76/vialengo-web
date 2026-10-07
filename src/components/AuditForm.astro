@@ -1,43 +1,127 @@
 ---
-import { siteConfig } from '../config/site';
+import { getFormMode, siteConfig } from '../config/site';
+import { href } from '../lib/url';
+
+// Tres modos (ver getFormMode en config/site.ts):
+//  - live:     envía de verdad al endpoint configurado.
+//  - dev-mock: solo en `npm run dev` sin endpoint. Valida, NO envía y lo dice.
+//  - disabled: producción sin endpoint o sin datos legales completos. No hay formulario.
+const mode = getFormMode();
+const { endpoint, turnstileSiteKey } = siteConfig.form;
+const email = siteConfig.contact.email;
 ---
-<form class="audit-form" id="audit-form" novalidate data-endpoint={siteConfig.formEndpoint} data-turnstile-key={siteConfig.turnstileSiteKey}>
-  <div class="form-grid">
-    <label>Nombre<input name="name" autocomplete="name" required /></label>
-    <label>Clínica<input name="clinic" autocomplete="organization" required /></label>
-    <label>Email<input name="email" type="email" autocomplete="email" required /></label>
-    <label>Teléfono <em>Opcional</em><input name="phone" type="tel" autocomplete="tel" /></label>
+{mode === 'disabled' ? (
+  <div class="audit-form form-unavailable" role="status">
+    <h3>El formulario todavía no está activo</h3>
+    <p>Estamos terminando de prepararlo. {email ? <>Mientras tanto, escríbenos a <a href={`mailto:${email}`}>{email}</a>.</> : 'Vuelve en unos días.'}</p>
   </div>
-  <label>Web <em>Opcional</em><input name="website" type="url" autocomplete="url" placeholder="https://" /></label>
-  <label>¿Qué te gustaría mejorar? <em>Opcional</em><textarea name="message" rows="4"></textarea></label>
-  <label class="consent"><input name="privacy" type="checkbox" required /><span>Acepto el tratamiento de mis datos para responder a esta solicitud. <a href="/privacidad">Consulta la política de privacidad.</a></span></label>
-  {siteConfig.turnstileSiteKey && <div class="turnstile-placeholder" data-turnstile-sitekey={siteConfig.turnstileSiteKey}>La verificación anti-spam se activará al configurar Turnstile.</div>}
-  <button class="button" type="submit">Solicitar auditoría gratuita</button>
-  <p class="form-status" aria-live="polite"></p>
-</form>
+) : (
+  <form class="audit-form" id="audit-form" novalidate data-state="idle" data-mode={mode} data-endpoint={endpoint} data-turnstile={turnstileSiteKey ? 'on' : 'off'} data-contact={email ?? ''}>
+    {mode === 'dev-mock' && <p class="dev-banner"><strong>Modo desarrollo.</strong> Este formulario valida los datos pero no envía nada. Define <code>PUBLIC_AUDIT_FORM_ENDPOINT</code> para probar el envío real.</p>}
+    <div class="form-grid">
+      <label>Nombre<input name="name" autocomplete="name" required /><span class="field-error" aria-live="polite"></span></label>
+      <label>Negocio<input name="business" autocomplete="organization" required /><span class="field-error" aria-live="polite"></span></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required /><span class="field-error" aria-live="polite"></span></label>
+      <label>Teléfono <em>Opcional</em><input name="phone" type="tel" autocomplete="tel" /><span class="field-error" aria-live="polite"></span></label>
+    </div>
+    <label>Web <em>Opcional</em><input name="website" type="url" autocomplete="url" placeholder="https://" /><span class="field-error" aria-live="polite"></span></label>
+    <label>¿Qué te gustaría mejorar? <em>Opcional</em><textarea name="message" rows="4" maxlength="2000"></textarea></label>
+    <div class="hp" aria-hidden="true"><label>No rellenar<input name="_gotcha" tabindex="-1" autocomplete="off" /></label></div>
+    <label class="consent"><input name="privacy" type="checkbox" required /><span>He leído la <a href={href('/privacidad/')}>política de privacidad</a> y acepto el tratamiento de mis datos para responder a esta solicitud.<span class="field-error" aria-live="polite"></span></span></label>
+    {turnstileSiteKey && <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>}
+    <button class="button" type="submit">Solicitar auditoría</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+)}
+{mode === 'live' && turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 <script>
   import { trackEvent } from '../lib/analytics';
+
   const form = document.querySelector<HTMLFormElement>('#audit-form');
-  const status = form?.querySelector<HTMLElement>('.form-status');
-  let started = false;
-  form?.addEventListener('focusin', () => { if (!started) { started = true; trackEvent('audit_form_started'); } });
-  form?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!form || !status) return;
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    const endpoint = form.dataset.endpoint;
-    const submit = form.querySelector<HTMLButtonElement>('[type="submit"]');
-    submit!.disabled = true;
-    status.textContent = endpoint ? 'Enviando solicitud…' : 'Modo desarrollo: solicitud validada. Configura PUBLIC_AUDIT_FORM_ENDPOINT para recibirla.';
-    if (!endpoint) { submit!.disabled = false; trackEvent('audit_form_submitted', { mode: 'mock' }); return; }
-    try {
-      const response = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-      if (!response.ok) throw new Error('request failed');
-      form.reset();
-      status.textContent = 'Gracias. Hemos recibido tu solicitud y te contactaremos pronto.';
-      trackEvent('audit_form_submitted');
-    } catch {
-      status.textContent = 'No hemos podido enviar la solicitud. Inténtalo de nuevo o contáctanos más tarde.';
-    } finally { submit!.disabled = false; }
-  });
+  if (form) {
+    const status = form.querySelector<HTMLElement>('.form-status')!;
+    const submit = form.querySelector<HTMLButtonElement>('[type="submit"]')!;
+    const mode = form.dataset.mode;
+    const contact = form.dataset.contact;
+    let started = false;
+
+    const setState = (state: 'idle' | 'loading' | 'success' | 'error' | 'dev', message = '') => {
+      form.dataset.state = state;
+      status.textContent = message;
+      submit.disabled = state === 'loading';
+      submit.textContent = state === 'loading' ? 'Enviando…' : 'Solicitar auditoría';
+    };
+
+    // Mensaje de validación en español, junto al campo.
+    const messageFor = (field: HTMLInputElement | HTMLTextAreaElement): string => {
+      const v = field.validity;
+      if (v.valueMissing) return field instanceof HTMLInputElement && field.type === 'checkbox' ? 'Debes aceptar la política de privacidad para continuar.' : 'Este campo es obligatorio.';
+      if (v.typeMismatch) return field.type === 'email' ? 'Introduce un email válido.' : 'Introduce una web válida, empezando por https://';
+      return '';
+    };
+
+    const validate = (): boolean => {
+      let firstInvalid: HTMLElement | null = null;
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input:not(.hp input), textarea').forEach((field) => {
+        const error = field.closest('label')!.querySelector<HTMLElement>('.field-error');
+        if (!error) return;
+        const message = field.validity.valid ? '' : messageFor(field);
+        error.textContent = message;
+        error.id ||= `err-${field.name}`;
+        if (message) {
+          field.setAttribute('aria-invalid', 'true');
+          field.setAttribute('aria-describedby', error.id);
+          firstInvalid ||= field;
+        } else {
+          field.removeAttribute('aria-invalid');
+          field.removeAttribute('aria-describedby');
+        }
+      });
+      (firstInvalid as HTMLElement | null)?.focus();
+      return !firstInvalid;
+    };
+
+    form.addEventListener('focusin', () => { if (!started) { started = true; trackEvent('audit_form_started'); } });
+    form.addEventListener('input', (event) => {
+      const field = event.target as HTMLInputElement;
+      if (field.getAttribute('aria-invalid') && field.validity.valid) validate();
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (form.dataset.state === 'loading') return;
+      if (!validate()) { setState('idle', 'Revisa los campos marcados.'); return; }
+
+      // Trampa anti-spam: un bot rellenó el campo oculto. No avisamos.
+      if ((form.elements.namedItem('_gotcha') as HTMLInputElement).value) return;
+
+      if (mode === 'dev-mock') {
+        setState('dev', 'Modo desarrollo: los datos son válidos, pero NO se ha enviado nada.');
+        trackEvent('audit_form_submitted', { mode: 'mock' });
+        return;
+      }
+
+      const data = new FormData(form);
+      if (form.querySelector('.cf-turnstile') && !data.get('cf-turnstile-response')) {
+        setState('error', 'Completa la verificación anti-spam y vuelve a enviar.');
+        return;
+      }
+
+      setState('loading', 'Enviando solicitud…');
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(form.dataset.endpoint!, { method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: controller.signal });
+        if (!response.ok) throw new Error(`status ${response.status}`);
+        form.reset();
+        setState('success', 'Gracias. Hemos recibido tu solicitud y te contactaremos pronto.');
+        trackEvent('audit_form_submitted');
+      } catch {
+        setState('error', `No hemos podido enviar la solicitud. Inténtalo de nuevo${contact ? ` o escríbenos a ${contact}` : ' en unos minutos'}.`);
+      } finally {
+        clearTimeout(timeout);
+        (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
+      }
+    });
+  }
 </script>

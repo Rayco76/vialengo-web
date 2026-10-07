@@ -1,24 +1,29 @@
 ---
-import { siteConfig } from '../config/site';
+import { navLinks, siteConfig } from '../config/site';
+import { href } from '../lib/url';
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label={`${siteConfig.name}, inicio`}>
-      <span class="brand-mark" aria-hidden="true">+</span><span>{siteConfig.name}</span>
+    <a class="brand" href={href('/')} aria-label={`${siteConfig.name}, inicio`}>
+      <img src={href('/brand/vialengo-logo.svg')} alt="" width="116" height="30" />
     </a>
     <nav aria-label="Principal">
-      <a href="#soluciones">Soluciones</a>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#faq">FAQ</a>
+      {navLinks.map((link) => <a href={href(link.path)}>{link.label}</a>)}
     </nav>
-    <a class="button button-small" data-track-cta href="#auditoria">Solicitar auditoría<span class="sr-only"> gratuita</span></a>
+    <a class="button button-small" data-track-cta href={href('/#auditoria')}>Solicitar auditoría</a>
     <details class="mobile-menu">
       <summary><span class="sr-only">Abrir menú</span><span aria-hidden="true">☰</span></summary>
       <nav aria-label="Principal móvil">
-        <a href="#soluciones">Soluciones</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#faq">FAQ</a>
+        {navLinks.map((link) => <a href={href(link.path)}>{link.label}</a>)}
       </nav>
     </details>
   </div>
 </header>
+<script>
+  // Cierra el menú móvil al pulsar un enlace (los anclajes no recargan la página).
+  document.querySelectorAll<HTMLDetailsElement>('.mobile-menu').forEach((menu) => {
+    menu.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) menu.open = false;
+    });
+  });
+</script>

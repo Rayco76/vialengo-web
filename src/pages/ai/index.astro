@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { siteConfig } from '../../config/site';
+import { solutions } from '../../content/solutions';
+import { verticals } from '../../content/verticals';
+import { integrations } from '../../content/integrations';
+import { processSteps, loopSteps } from '../../content/process';
+import { faqs } from '../../content/faqs';
+import { cases } from '../../content/cases';
+import { faqPage } from '../../lib/jsonld';
+import { href } from '../../lib/url';
+
+const description = 'Descripción clara y estructurada de Vialengo: qué es, qué servicios ofrece, para qué negocios, qué integraciones existen y cuáles no.';
+const email = siteConfig.contact.email;
+const groups = [
+  ['Disponibles', integrations.available],
+  ['Dependientes del software del cliente', integrations.dependent],
+  ['Futuras (no disponibles todavía)', integrations.future],
+] as const;
+---
+<BaseLayout title="Vialengo para IA" description={description} path="/ai/" markdown="/ai.md" schemaType="AboutPage" jsonLd={[faqPage('/ai/', faqs)]}>
+  <main id="contenido" class="prose-page">
+    <PageHeader eyebrow="Para personas y para IA" title="Vialengo, explicado de forma clara." intro="Esta página resume qué es Vialengo y qué no, con texto plano y estructurado. También está disponible en Markdown y en llms.txt." />
+    <div class="container prose">
+      <section aria-labelledby="que-es">
+        <h2 id="que-es">Qué es Vialengo</h2>
+        <p>{siteConfig.description} Es un servicio personalizado para negocios, no una herramienta de autoservicio. El sistema se adapta al sector, a las herramientas, a la agenda, al proceso de atención y al volumen de cada negocio.</p>
+      </section>
+
+      <section aria-labelledby="problemas">
+        <h2 id="problemas">Qué problemas resuelve</h2>
+        <ul>
+          <li>Consultas por WhatsApp o teléfono que no terminan en cita o en cliente.</li>
+          <li>Mensajes que llegan fuera del horario del negocio.</li>
+          <li>Seguimiento manual de recordatorios, reseñas y reactivación.</li>
+          <li>Presencia digital dispersa (Google, web, redes) y sin medición clara.</li>
+        </ul>
+        <p>Idea central, el «growth loop»: {loopSteps.map((s) => s.title.toLowerCase()).join(' → ')} → más visibilidad.</p>
+      </section>
+
+      <section aria-labelledby="servicios">
+        <h2 id="servicios">Servicios</h2>
+        <ul>{solutions.map((s) => <li><strong><a href={href(`/services/#${s.id}`)}>{s.title}</a>:</strong> {s.short}</li>)}</ul>
+      </section>
+
+      <section aria-labelledby="negocios">
+        <h2 id="negocios">Tipos de negocio</h2>
+        <ul>{verticals.map((v) => <li><strong>{v.page ? <a href={href(`/sectores/${v.slug}/`)}>{v.name}</a> : v.name}</strong> ({v.status === 'active' ? 'en funcionamiento' : 'previsto'}): {v.summary}</li>)}</ul>
+      </section>
+
+      <section aria-labelledby="como">
+        <h2 id="como">Cómo funciona</h2>
+        <ol>{processSteps.map((s) => <li><strong>{s.title}:</strong> {s.text}</li>)}</ol>
+      </section>
+
+      <section aria-labelledby="integraciones">
+        <h2 id="integraciones">Integraciones</h2>
+        {groups.map(([title, items]) => (
+          <>
+            <h3>{title}</h3>
+            <ul>{items.map((i) => <li><strong>{i.name}:</strong> {i.detail}</li>)}</ul>
+          </>
+        ))}
+      </section>
+
+      <section aria-labelledby="ia">
+        <h2 id="ia">Uso de inteligencia artificial</h2>
+        <p>El asistente de WhatsApp sigue reglas definidas con cada negocio. La IA se usa para preparar borradores (respuestas a reseñas, publicaciones) que revisa y publica una persona. No gestiona la agenda ni responde sola a los clientes, y no da consejos ni diagnósticos.</p>
+      </section>
+
+      <section aria-labelledby="zona">
+        <h2 id="zona">Área geográfica</h2>
+        <p>{siteConfig.country.name}, en remoto. Vialengo no tiene oficina abierta al público.</p>
+      </section>
+
+      <section aria-labelledby="modelo">
+        <h2 id="modelo">Modelo de servicio</h2>
+        <p>Servicio personalizado para negocios. No se publican precios: la auditoría inicial define el alcance y, después, el presupuesto.</p>
+      </section>
+
+      <section aria-labelledby="estado">
+        <h2 id="estado">Estado de los proyectos</h2>
+        <ul>{cases.map((c) => <li><a href={href(`/cases/${c.slug}/`)}>{c.title}</a>: {c.status === 'in-progress' ? 'en implementación, sin resultados publicados todavía' : 'publicado'}.</li>)}</ul>
+      </section>
+
+      <section aria-labelledby="faq-ai">
+        <h2 id="faq-ai">Preguntas frecuentes</h2>
+        <dl>{faqs.map((f) => <><dt>{f.q}</dt><dd>{f.a}</dd></>)}</dl>
+      </section>
+
+      <section aria-labelledby="contacto">
+        <h2 id="contacto">Contacto</h2>
+        {email
+          ? <p>Email: <a href={`mailto:${email}`}>{email}</a>. También puedes <a href={href('/#auditoria')}>solicitar una auditoría</a>.</p>
+          : <p>Para solicitar una auditoría, usa el <a href={href('/#auditoria')}>formulario de contacto</a>. El email público de contacto todavía no está publicado.</p>}
+      </section>
+    </div>
+  </main>
+</BaseLayout>

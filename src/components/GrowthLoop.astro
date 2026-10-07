@@ -1,3 +1,36 @@
-<section class="section loop-section" aria-labelledby="loop-title">
-  <div class="container loop-layout"><div><p class="eyebrow">Growth loop</p><h2 id="loop-title">Un sistema conectado alrededor del paciente</h2><p class="section-intro">Clinic Growth OS conecta diferentes partes del crecimiento de una clínica para evitar que cada canal funcione de forma aislada.</p></div><div class="loop-diagram" role="img" aria-label="Captar, convertir, retener y medir forman un ciclo continuo"><span>Captar</span><b>↓</b><span>Convertir</span><b>↓</b><span>Retener</span><b>↓</b><span>Medir</span><b class="return">↺</b></div></div>
+---
+import { loopSteps } from '../content/process';
+import { href } from '../lib/url';
+---
+<section class="section loop-section" id="growth-loop" aria-labelledby="loop-title">
+  <div class="container loop-layout">
+    <div class="loop-copy">
+      <p class="eyebrow">Growth loop</p>
+      <h2 id="loop-title">Un negocio que fluye, no herramientas sueltas.</h2>
+      <p class="section-intro">Cada parte alimenta a la siguiente: quien te encuentra, escribe; quien queda satisfecho, deja una reseña; y esa reseña te hace más visible.</p>
+      <ol class="loop-list">
+        {loopSteps.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+        <li class="loop-return"><strong>Más visibilidad</strong><span>Y el ciclo vuelve a empezar.</span></li>
+      </ol>
+    </div>
+    <div class="loop-figure" role="img" aria-label="Ciclo de crecimiento: visibilidad, conversación, cita o lead, experiencia y reseña, que devuelve más visibilidad">
+      <svg viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+      <circle class="ring" cx="260" cy="260" r="185" />
+      <path class="ring-arrow" d="M-7 -6 L7 0 L-7 6 Z" transform="translate(368.7 110.3) rotate(36)" />
+      <path class="ring-arrow" d="M-7 -6 L7 0 L-7 6 Z" transform="translate(435.9 317.2) rotate(108)" />
+      <path class="ring-arrow" d="M-7 -6 L7 0 L-7 6 Z" transform="translate(260.0 445.0) rotate(180)" />
+      <path class="ring-arrow" d="M-7 -6 L7 0 L-7 6 Z" transform="translate(84.1 317.2) rotate(252)" />
+      <path class="ring-arrow" d="M-7 -6 L7 0 L-7 6 Z" transform="translate(151.3 110.3) rotate(324)" />
+      <g class="ring-node"><rect x="186.0" y="47.0" width="148" height="56" rx="14" /><text x="260.0" y="81.0" text-anchor="middle">Visibilidad</text></g>
+      <g class="ring-node"><rect x="361.9" y="174.8" width="148" height="56" rx="14" /><text x="435.9" y="208.8" text-anchor="middle">Conversación</text></g>
+      <g class="ring-node"><rect x="294.7" y="381.7" width="148" height="56" rx="14" /><text x="368.7" y="415.7" text-anchor="middle">Cita o lead</text></g>
+      <g class="ring-node"><rect x="77.3" y="381.7" width="148" height="56" rx="14" /><text x="151.3" y="415.7" text-anchor="middle">Experiencia</text></g>
+      <g class="ring-node"><rect x="10.1" y="174.8" width="148" height="56" rx="14" /><text x="84.1" y="208.8" text-anchor="middle">Reseña</text></g>
+        <g class="ring-center">
+          <image href={href('/brand/vialengo-symbol.svg')} x="222" y="214" width="76" height="61" />
+          <text x="260" y="304" text-anchor="middle" class="ring-brand">Vialengo</text>
+        </g>
+      </svg>
+    </div>
+  </div>
 </section>

@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+const axes = ['Tu sector', 'Tus herramientas', 'Tu agenda', 'Tu forma de atender', 'Tu volumen', 'Lo que necesitas de verdad'];
+---
+<section class="section personal-section" aria-labelledby="personal-title">
+  <div class="container personal-layout">
+    <div>
+      <p class="eyebrow">A medida</p>
+      <h2 id="personal-title">No instalamos el mismo sistema en todos los negocios.</h2>
+      <p class="section-intro">Una herramienta genérica te pide que te adaptes a ella. Aquí es al revés: partimos de cómo funciona tu negocio y activamos solo lo que le aporta.</p>
+    </div>
+    <ul class="axes" aria-label="El servicio se adapta a">
+      {axes.map((axis) => <li><Icon name="Check" size={18} />{axis}</li>)}
+    </ul>
+  </div>
+</section>

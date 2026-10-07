@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { verticalPages } from '../../content/verticals';
+import { solutions } from '../../content/solutions';
+import { href } from '../../lib/url';
+
+export function getStaticPaths() {
+  return verticalPages.map((vertical) => ({ params: { slug: vertical.slug }, props: { vertical } }));
+}
+const { vertical } = Astro.props;
+---
+<BaseLayout title={vertical.name} description={`Vialengo para ${vertical.name.toLowerCase()}: ${vertical.summary}`} path={`/sectores/${vertical.slug}/`}>
+  <main id="contenido">
+    <PageHeader eyebrow="Sector" title={`Vialengo para ${vertical.name.toLowerCase()}`} intro={vertical.summary} />
+    <section class="section" aria-labelledby="usos">
+      <div class="container service-layout">
+        <div>
+          <h2 id="usos">Cómo se aplica</h2>
+          {vertical.note && <p class="section-intro">{vertical.note}</p>}
+        </div>
+        <ul class="check-list">{vertical.useCases?.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+    <section class="section alt" aria-labelledby="relacionados">
+      <div class="container">
+        <h2 id="relacionados">Servicios que se combinan</h2>
+        <ul class="inline-links">{solutions.map((s) => <li><a href={href(`/services/#${s.id}`)}>{s.title}</a></li>)}</ul>
+      </div>
+    </section>
+    <CtaBand />
+  </main>
+</BaseLayout>

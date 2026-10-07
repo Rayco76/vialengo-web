@@ -1,4 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPage from '../components/LegalPage.astro';
+import Pending from '../components/Pending.astro';
+
 ---
-<BaseLayout title="Aviso legal | Clinic Growth OS"><main class="placeholder-page"><h1>Aviso legal</h1><p>Contenido legal pendiente de completar antes de publicar.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<BaseLayout title="Aviso legal" description="Aviso legal de Vialengo (borrador pendiente de los datos del titular)." path="/aviso-legal/">
+  <main id="contenido">
+    <LegalPage title="Aviso legal" intro="Información sobre el titular de este sitio web. Documento en preparación.">
+      <section aria-labelledby="resto">
+        <h2 id="resto">Contenido pendiente</h2>
+        <ul>
+          <li>Condiciones de uso del sitio: <Pending /></li>
+          <li>Propiedad intelectual e industrial: <Pending /></li>
+          <li>Responsabilidad y enlaces a terceros: <Pending /></li>
+          <li>Legislación aplicable y jurisdicción: <Pending /></li>
+        </ul>
+      </section>
+    </LegalPage>
+  </main>
+</BaseLayout>

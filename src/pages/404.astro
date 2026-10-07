@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { href } from '../lib/url';
+---
+<BaseLayout title="Página no encontrada" path="/404/" noindex>
+  <main id="contenido">
+    <PageHeader eyebrow="Error 404" title="Esta página no existe." />
+    <div class="container prose"><p><a class="button" href={href('/')}>Volver al inicio</a></p></div>
+  </main>
+</BaseLayout>

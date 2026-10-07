@@ -1,4 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { href } from '../../lib/url';
 ---
-<BaseLayout title="Recursos | Clinic Growth OS"><main class="placeholder-page"><h1>Recursos</h1><p>Esta sección estará disponible próximamente.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<!-- Ruta reservada para guías y recursos. Fuera de navegación, sitemap y llms.txt. -->
+<BaseLayout title="Recursos" description="Recursos de Vialengo." path="/resources/" noindex>
+  <main id="contenido">
+    <PageHeader eyebrow="Recursos" title="Aún no hay recursos publicados." intro="Cuando tengamos guías útiles, estarán aquí." />
+    <div class="container prose"><p><a href={href('/services/')}>Ver los servicios</a></p></div>
+    <CtaBand />
+  </main>
+</BaseLayout>

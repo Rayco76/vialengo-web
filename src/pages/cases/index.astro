@@ -1,4 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { cases } from '../../content/cases';
+import { href } from '../../lib/url';
 ---
-<BaseLayout title="Casos de estudio | Clinic Growth OS"><main class="placeholder-page"><h1>Casos de estudio</h1><p>Estamos midiendo el primer caso de implementación.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<BaseLayout title="Casos" description="Estado de los primeros proyectos de Vialengo. Todavía no publicamos resultados: solo datos verificados." path="/cases/" schemaType="CollectionPage">
+  <main id="contenido">
+    <PageHeader eyebrow="Casos" title="Primeros proyectos en implementación." intro="Todavía no hay resultados que publicar. Cuando los haya, aparecerán aquí con datos verificados y sin cifras de relleno." />
+    <section class="section" aria-label="Proyectos">
+      <div class="container case-list">
+        {cases.map((c) => (
+          <article class="case-item">
+            <span class="case-label">{c.status === 'in-progress' ? 'En implementación' : 'Publicado'} · {c.sector}</span>
+            <h2><a href={href(`/cases/${c.slug}/`)}>{c.title}</a></h2>
+            <p>{c.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <CtaBand />
+  </main>
+</BaseLayout>

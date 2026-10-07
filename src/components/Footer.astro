@@ -1,4 +1,18 @@
 ---
 import { siteConfig } from '../config/site';
+import { href } from '../lib/url';
 ---
-<footer><div class="container footer-inner"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">+</span><span>{siteConfig.name}</span></a><p>Diseñado para clínicas que quieren crecer con más claridad.</p><nav aria-label="Legal"><a href="/privacidad">Privacidad</a><a href="/aviso-legal">Aviso legal</a><a href="#auditoria">Contacto</a></nav></div></footer>
+<footer>
+  <div class="container footer-inner">
+    <a class="brand" href={href('/')}><img src={href('/brand/vialengo-logo-on-dark.svg')} alt={siteConfig.name} width="116" height="30" /></a>
+    <p>Tecnología que hace crecer tu negocio.</p>
+    <nav aria-label="Pie de página">
+      <a href={href('/services/')}>Servicios</a>
+      <a href={href('/cases/')}>Casos</a>
+      <a href={href('/ai/')}>Vialengo para IA</a>
+      <a href={href('/privacidad/')}>Privacidad</a>
+      <a href={href('/aviso-legal/')}>Aviso legal</a>
+      <a href={href('/#auditoria')}>Contacto</a>
+    </nav>
+  </div>
+</footer>

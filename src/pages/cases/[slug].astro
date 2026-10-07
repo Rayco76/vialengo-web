@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { cases } from '../../content/cases';
+import { href } from '../../lib/url';
+
+export function getStaticPaths() {
+  return cases.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+---
+<BaseLayout title={c.title} description={c.summary} path={`/cases/${c.slug}/`}>
+  <main id="contenido">
+    <PageHeader eyebrow={`Caso · ${c.sector}`} title={c.title} intro={c.summary} />
+    <section class="section" aria-labelledby="alcance">
+      <div class="container service-layout">
+        <div>
+          <h2 id="alcance">Qué se está implantando</h2>
+          <p class="section-intro">Estado: {c.status === 'in-progress' ? 'en implementación' : 'publicado'}.</p>
+        </div>
+        <ul class="check-list">{c.scope.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+    <section class="section alt" aria-labelledby="resultados">
+      <div class="container">
+        <h2 id="resultados">Resultados</h2>
+        {c.metrics.length
+          ? <div class="metric-grid metric-grid-page">{c.metrics.map((m) => <div><strong>{m.value}</strong><span>{m.label}</span></div>)}</div>
+          : <p class="section-intro">Todavía no publicamos resultados: esperamos a tener datos reales y verificados. Volveremos a esta página cuando los tengamos.</p>}
+        <p><a class="text-link" href={href('/cases/')}>← Todos los casos</a></p>
+      </div>
+    </section>
+    <CtaBand />
+  </main>
+</BaseLayout>

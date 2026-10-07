@@ -1,4 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { href } from '../../lib/url';
 ---
-<BaseLayout title="Herramientas para clínicas | Clinic Growth OS"><main class="placeholder-page"><h1>Herramientas para clínicas</h1><p>Estamos preparando herramientas gratuitas para ayudarte a detectar oportunidades de mejora.</p><a href="/">Volver al inicio</a></main></BaseLayout>
+<!-- Ruta reservada para futuras herramientas de diagnóstico. Fuera de navegación, sitemap y llms.txt. -->
+<BaseLayout title="Herramientas" description="Herramientas de diagnóstico de Vialengo." path="/tools/" noindex>
+  <main id="contenido">
+    <PageHeader eyebrow="Herramientas" title="Aún no hay herramientas publicadas." intro="Mientras tanto, la forma más directa de saber dónde mejorar es la auditoría inicial." />
+    <div class="container prose"><p><a href={href('/services/')}>Ver los servicios</a></p></div>
+    <CtaBand />
+  </main>
+</BaseLayout>

@@ -1,10 +1,5 @@
 ---
-const faqs = [
-  ['¿Clinic Growth OS sustituye a recepción?', 'No. Está pensado para automatizar tareas repetitivas y ayudar al equipo a gestionar mejor consultas, seguimiento y citas.'],
-  ['¿Hay que cambiar las herramientas que ya utiliza la clínica?', 'No necesariamente. Primero se analiza el sistema actual y se intenta integrar con las herramientas existentes siempre que tenga sentido.'],
-  ['¿Funciona sólo para clínicas dentales?', 'Dental es el foco inicial, aunque la arquitectura se está diseñando para poder adaptarse posteriormente a otros tipos de clínica.'],
-  ['¿Utiliza inteligencia artificial?', 'Sí, cuando aporta valor. La IA es una herramienta dentro del sistema, no el producto en sí mismo.'],
-  ['¿Cuánto cuesta?', 'El precio depende de los módulos y necesidades de la clínica. La primera auditoría permite definir el alcance.'],
-];
+import { faqs } from '../content/faqs';
+const items = faqs.filter((f) => f.home);
 ---
-<section class="section faq-section" id="faq" aria-labelledby="faq-title"><div class="container faq-layout"><div><p class="eyebrow">FAQ</p><h2 id="faq-title">Preguntas habituales</h2></div><div>{faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
+<section class="section faq-section" id="faq" aria-labelledby="faq-title"><div class="container faq-layout"><div><p class="eyebrow">FAQ</p><h2 id="faq-title">Preguntas habituales</h2></div><div>{items.map((f) => <details><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}</div></div></section>
