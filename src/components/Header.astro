@@ -1,6 +1,8 @@
 ---
 import { navLinks, siteConfig } from '../config/site';
 import { href } from '../lib/url';
+const current = Astro.url.pathname;
+const isCurrent = (path: string) => !path.includes('#') && href(path) === current;
 ---
 <header class="site-header">
   <div class="container header-inner">
@@ -8,13 +10,13 @@ import { href } from '../lib/url';
       <img src={href('/brand/vialengo-logo.svg')} alt="" width="116" height="30" />
     </a>
     <nav aria-label="Principal">
-      {navLinks.map((link) => <a href={href(link.path)}>{link.label}</a>)}
+      {navLinks.map((link) => <a href={href(link.path)} aria-current={isCurrent(link.path) ? 'page' : undefined}>{link.label}</a>)}
     </nav>
     <a class="button button-small" data-track-cta href={href('/#auditoria')}>Solicitar auditoría</a>
     <details class="mobile-menu">
       <summary><span class="sr-only">Abrir menú</span><span aria-hidden="true">☰</span></summary>
       <nav aria-label="Principal móvil">
-        {navLinks.map((link) => <a href={href(link.path)}>{link.label}</a>)}
+        {navLinks.map((link) => <a href={href(link.path)} aria-current={isCurrent(link.path) ? 'page' : undefined}>{link.label}</a>)}
       </nav>
     </details>
   </div>

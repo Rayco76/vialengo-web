@@ -30,7 +30,7 @@ ${verticalPages.map((v) => link(v.name, `/sectores/${v.slug}/`, v.summary)).join
 
 ## Cases
 
-${link('Casos', '/cases/', 'estado de los primeros proyectos; todavía sin resultados publicados')}
+${link('Casos', '/cases/', 'estado del primer proyecto; todavía sin resultados publicados')}
 ${cases.map((c) => link(c.title, `/cases/${c.slug}/`, c.summary)).join('\n')}
 
 ## Legal

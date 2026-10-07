@@ -46,7 +46,7 @@ ${verticals.map((v) => `- ${v.name}${v.status === 'planned' ? ' (preparado, sin 
 
 ## Resultados
 
-Primeros proyectos en implementación. Todavía no se publican cifras de resultados.
+Primer proyecto en implementación. Todavía no se publican cifras de resultados.
 
 ## Contacto
 
@@ -96,7 +96,7 @@ ${solutions.map((s) => `- **${s.title}**: ${s.short}`).join('\n')}
 
 ## Tipos de negocio
 
-${verticals.map((v) => `- **${v.name}** (${v.status === 'active' ? 'en funcionamiento' : 'previsto'}): ${v.summary}`).join('\n')}
+${verticals.map((v) => `- **${v.name}** (${v.status === 'active' ? 'primer sector, primer proyecto en implementación' : 'previsto'}): ${v.summary}`).join('\n')}
 
 ## Cómo funciona
 

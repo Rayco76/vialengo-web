@@ -13,7 +13,7 @@ export const siteConfig = {
   name: 'Vialengo',
   tagline: 'Tecnología que hace crecer tu negocio',
   description:
-    'Vialengo ayuda a negocios locales a captar clientes, automatizar su atención y mejorar su presencia digital con WhatsApp, agenda, reputación, redes sociales e IA aplicada.',
+    'Vialengo ayuda a negocios locales a captar clientes, automatizar su atención y mejorar su presencia digital: Google, redes, WhatsApp, agenda y reseñas.',
   locale: 'es-ES',
   lang: 'es',
   country: { code: 'ES', name: 'España' },

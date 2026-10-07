@@ -38,7 +38,7 @@ export const faqs: Faq[] = [
   },
   {
     q: '¿Qué datos pedís en el formulario?',
-    a: 'Nombre, clínica o negocio, email y, si quieres, teléfono, web y un mensaje. No pedimos datos de salud ni datos de pacientes o clientes.',
+    a: 'Nombre, nombre del negocio, email y, si quieres, teléfono, web y un mensaje. No pedimos datos de salud ni datos de pacientes o clientes.',
     home: false,
   },
 ];

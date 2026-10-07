@@ -46,7 +46,7 @@ const groups = [
 
       <section aria-labelledby="negocios">
         <h2 id="negocios">Tipos de negocio</h2>
-        <ul>{verticals.map((v) => <li><strong>{v.page ? <a href={href(`/sectores/${v.slug}/`)}>{v.name}</a> : v.name}</strong> ({v.status === 'active' ? 'en funcionamiento' : 'previsto'}): {v.summary}</li>)}</ul>
+        <ul>{verticals.map((v) => <li><strong>{v.page ? <a href={href(`/sectores/${v.slug}/`)}>{v.name}</a> : v.name}</strong> ({v.status === 'active' ? 'primer sector, primer proyecto en implementación' : 'previsto'}): {v.summary}</li>)}</ul>
       </section>
 
       <section aria-labelledby="como">

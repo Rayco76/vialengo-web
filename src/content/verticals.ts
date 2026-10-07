@@ -26,6 +26,7 @@ export const verticals: Vertical[] = [
       'Ante una urgencia, el asistente remite a la clínica o a los servicios de emergencias; no da consejos clínicos ni diagnósticos.',
       'Recepción continúa la conversación desde una bandeja compartida y propone el horario de la cita.',
       'Seguimiento de reseñas de Google y borradores de respuesta revisados por una persona.',
+      'Calendario mensual de contenidos para redes, con borradores que revisa una persona antes de publicar.',
     ],
     note: 'La conexión con el software de gestión de la clínica se valora caso por caso.',
   },

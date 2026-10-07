@@ -8,7 +8,7 @@ export type AnalyticsEvent =
 
 export function trackEvent(event: AnalyticsEvent, properties: Record<string, unknown> = {}) {
   try {
-    window.dispatchEvent(new CustomEvent('clinic-growth:event', { detail: { event, properties } }));
+    window.dispatchEvent(new CustomEvent('vialengo:event', { detail: { event, properties } }));
   } catch {
     // La analítica nunca debe afectar a la experiencia de la página.
   }

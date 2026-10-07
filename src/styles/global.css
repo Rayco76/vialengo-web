@@ -59,7 +59,8 @@ ul, ol { padding: 0; }
 .brand img { display: block; height: 30px; width: auto; }
 .site-header nav { display: flex; gap: 28px; margin-left: auto; }
 .site-header nav a { font-size: 0.88rem; font-weight: 500; text-decoration: none; color: var(--muted); }
-.site-header nav a:hover { color: var(--ink); }
+.site-header nav a:hover, .site-header nav a[aria-current='page'] { color: var(--ink); }
+.site-header nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--green); text-decoration-thickness: 2px; }
 .mobile-menu { display: none; position: relative; }
 .mobile-menu summary { cursor: pointer; list-style: none; font-size: 1.3rem; padding: 4px 8px; }
 .mobile-menu summary::-webkit-details-marker { display: none; }
