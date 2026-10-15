@@ -52,4 +52,5 @@ campo trampa (honeypot) y Turnstile opcional.
 1. `PUBLIC_SITE_URL` = origen (p. ej. `https://vialengo.com` o `https://usuario.github.io`).
 2. Sin dominio propio, en subruta: `PUBLIC_BASE_PATH=/nombre-del-repo`. Con dominio propio, vacío.
 3. Publicar el contenido de `dist/` (`public/.nojekyll` evita que Jekyll ignore `_astro/`).
-4. Con dominio propio, añadir `public/CNAME` con el dominio.
+4. Con dominio propio, `public/CNAME` contiene el dominio (`vialengo.com`).
+5. El workflow `.github/workflows/deploy.yml` compila y publica en cada push a `main`. Las variables `PUBLIC_*` se definen en Settings → Secrets and variables → Actions → Variables (si `PUBLIC_SITE_URL` no existe, se usa `https://vialengo.com`).
