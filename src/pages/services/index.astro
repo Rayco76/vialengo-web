@@ -7,7 +7,7 @@ import { integrations } from '../../content/integrations';
 import { processSteps } from '../../content/process';
 import { serviceNodes } from '../../lib/jsonld';
 
-const description = 'Servicios de Vialengo: presencia digital, redes sociales, WhatsApp y atención, citas y agenda, reputación y automatización con IA para negocios locales.';
+const description = 'Servicios de Vialengo: creación y mantenimiento web, redes sociales, Google Business y reputación, WhatsApp, citas y soluciones digitales a medida para negocios locales.';
 const groups = [
   ['Disponibles', integrations.available],
   ['Dependen del software del negocio', integrations.dependent],
@@ -16,7 +16,7 @@ const groups = [
 ---
 <BaseLayout title="Servicios" description={description} path="/services/" markdown="/services.md" schemaType="CollectionPage" jsonLd={serviceNodes()}>
   <main id="contenido">
-    <PageHeader eyebrow="Servicios" title="Un sistema de crecimiento local, hecho a medida." intro="Estas son las áreas en las que trabaja Vialengo. No se contratan como herramientas aisladas: se combinan según lo que cada negocio necesita." />
+    <PageHeader eyebrow="Servicios" title="Nos ocupamos de tu parte digital." intro="Puedes empezar por tu web, tus redes o lo que más tiempo te esté quitando. Acordamos qué hacemos, cómo lo mantenemos y qué necesita tu revisión." />
 
     <div class="container service-index">
       <nav aria-label="Servicios"><ul>{solutions.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}</ul></nav>

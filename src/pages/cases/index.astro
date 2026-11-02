@@ -5,14 +5,14 @@ import CtaBand from '../../components/CtaBand.astro';
 import { cases } from '../../content/cases';
 import { href } from '../../lib/url';
 ---
-<BaseLayout title="Casos" description="Estado del primer proyecto de Vialengo. Todavía no publicamos resultados: solo datos verificados." path="/cases/" schemaType="CollectionPage">
+<BaseLayout title="Casos y proyectos" description="Caso piloto de Vialengo en una clínica dental local: proceso, identidad visual, contenido y primeras señales de alcance, sin atribución de pacientes." path="/cases/" schemaType="CollectionPage">
   <main id="contenido">
-    <PageHeader eyebrow="Casos" title="Primer proyecto en implementación." intro="Todavía no hay resultados que publicar. Cuando los haya, aparecerán aquí con datos verificados y sin cifras de relleno." />
+    <PageHeader eyebrow="Casos" title="Trabajo real, contado con contexto." intro="Compartimos el proceso del primer caso piloto: qué estamos construyendo, qué podemos mostrar y qué nos dicen las primeras señales. Sin atribuir pacientes ni resultados económicos." />
     <section class="section" aria-label="Proyectos">
       <div class="container case-list">
         {cases.map((c) => (
           <article class="case-item">
-            <span class="case-label">{c.status === 'in-progress' ? 'En implementación' : 'Publicado'} · {c.sector}</span>
+            <span class="case-label">{c.status === 'in-progress' ? 'Piloto en curso' : 'Publicado'} · {c.sector}</span>
             <h2><a href={href(`/cases/${c.slug}/`)}>{c.title}</a></h2>
             <p>{c.summary}</p>
           </article>

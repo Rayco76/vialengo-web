@@ -1,13 +1,13 @@
 ---
 import Icon from './Icon.astro';
-const axes = ['Tu sector', 'Tus herramientas', 'Tu agenda', 'Tu forma de atender', 'Tu volumen', 'Lo que necesitas de verdad'];
+const axes = ['Qué llevamos por ti', 'Qué material necesitamos', 'Qué apruebas tú', 'Con qué frecuencia', 'Qué herramientas usamos', 'Cómo revisamos el trabajo'];
 ---
 <section class="section personal-section" aria-labelledby="personal-title">
   <div class="container personal-layout">
     <div>
       <p class="eyebrow">A medida</p>
-      <h2 id="personal-title">No instalamos el mismo sistema en todos los negocios.</h2>
-      <p class="section-intro">Una herramienta genérica te pide que te adaptes a ella. Aquí es al revés: partimos de cómo funciona tu negocio y activamos solo lo que le aporta.</p>
+      <h2 id="personal-title">Un servicio a tu medida.<br />Y alguien al otro lado.</h2>
+      <p class="section-intro">Hablamos contigo, acordamos las prioridades y nos ocupamos del trabajo definido. Tendrás claro qué llevamos nosotros, qué necesita tu revisión y cómo seguimos avanzando.</p>
     </div>
     <ul class="axes" aria-label="El servicio se adapta a">
       {axes.map((axis) => <li><Icon name="Check" size={18} />{axis}</li>)}

@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import { solutions } from '../content/solutions';
 import { href } from '../lib/url';
 ---
-<section class="section solutions-section" id="soluciones" aria-labelledby="solutions-title"><div class="container"><p class="eyebrow">Soluciones</p><h2 id="solutions-title">Cada parte, en la misma dirección.</h2>
+<section class="section solutions-section" id="soluciones" aria-labelledby="solutions-title"><div class="container"><p class="eyebrow">De qué nos encargamos</p><h2 id="solutions-title">La parte digital tiene muchas piezas.<br />Te ayudamos a llevarlas.</h2><p class="section-intro">Desde una web que necesita un repaso hasta el día a día de tus redes y tu atención por WhatsApp. Acordamos qué hacemos por ti y lo mantenemos contigo.</p>
   <div class="solutions-grid">{solutions.map((s) => <article class="solution-card"><span class="icon-box"><Icon name={s.icon} size={22} /></span><h3>{s.title}</h3><p>{s.short}</p><a href={href(`/services/#${s.id}`)} aria-label={`Más información sobre ${s.title}`}>Más información <Icon name="ArrowRight" size={15} /></a></article>)}</div>
-  <p class="modules-note">Algunas funciones dependen del software que use cada negocio, por ejemplo su agenda. Lo valoramos en la auditoría, sin prometer integraciones universales.</p>
+  <p class="modules-note">Puedes empezar por un servicio o combinar varios. Definimos el trabajo, la frecuencia y lo que necesitas aportar antes de empezar.</p>
 </div></section>

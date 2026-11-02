@@ -1,4 +1,5 @@
 import { siteConfig } from '../config/site';
+import { founder } from '../content/about';
 import { solutions } from '../content/solutions';
 import { absoluteUrl } from './url';
 
@@ -16,6 +17,7 @@ export function organization() {
     '@type': 'Organization',
     '@id': orgId,
     name: siteConfig.name,
+    founder: { '@type': 'Person', name: founder.name },
     url: absoluteUrl('/'),
     description: siteConfig.description,
     areaServed: country,

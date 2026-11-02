@@ -1,0 +1,16 @@
+---
+import { href } from '../lib/url';
+interface Props { src: string | null; alt: string; label: string; portrait?: boolean; }
+const { src, alt, label, portrait = false } = Astro.props;
+---
+<div class:list={['media-frame', { portrait }]}>
+  {src ? (
+    <img src={href(src)} alt={alt} width={portrait ? 600 : 1200} height={portrait ? 800 : 750} loading="lazy" decoding="async" />
+  ) : (
+    <div class="media-placeholder">
+      <img src={href('/brand/vialengo-symbol.svg')} alt="" width="54" height="44" loading="lazy" />
+      <span>{label}</span>
+      <p>Espacio reservado para una imagen real.</p>
+    </div>
+  )}
+</div>

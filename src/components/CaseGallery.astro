@@ -1,0 +1,14 @@
+---
+import MediaFrame from './MediaFrame.astro';
+import type { CaseGalleryItem } from '../content/cases';
+interface Props { items: CaseGalleryItem[]; }
+const { items } = Astro.props;
+---
+<div class="case-gallery">
+  {items.map((item) => (
+    <figure>
+      <MediaFrame src={item.src} alt={item.alt} label="Próximamente" />
+      <figcaption><h3>{item.title}</h3><p>{item.caption}</p></figcaption>
+    </figure>
+  ))}
+</div>

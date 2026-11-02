@@ -11,9 +11,9 @@ const origin = String(env.PUBLIC_SITE_URL || 'https://vialengo.com').replace(/\/
 
 export const siteConfig = {
   name: 'Vialengo',
-  tagline: 'Tecnología que hace crecer tu negocio',
+  tagline: 'Nos encargamos de la parte digital de tu negocio',
   description:
-    'Vialengo ayuda a negocios locales a captar clientes, automatizar su atención y mejorar su presencia digital: Google, redes, WhatsApp, agenda y reseñas.',
+    'Vialengo se encarga de la parte digital de tu negocio: web, redes sociales, Google Business, reseñas, WhatsApp y citas. Un servicio cercano, con mantenimiento y soluciones a medida.',
   locale: 'es-ES',
   lang: 'es',
   country: { code: 'ES', name: 'España' },
@@ -73,5 +73,6 @@ export const navLinks = [
   { label: 'Servicios', path: '/services/' },
   { label: 'Sectores', path: '/#sectores' },
   { label: 'Cómo funciona', path: '/#como-funciona' },
+  { label: 'Casos', path: '/cases/' },
   { label: 'FAQ', path: '/#faq' },
 ] as const;

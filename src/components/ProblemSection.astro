@@ -6,29 +6,29 @@ const fragments = [
   { icon: 'Search', label: 'Google' },
   { icon: 'Share2', label: 'Redes' },
   { icon: 'MessageCircle', label: 'WhatsApp' },
-  { icon: 'CalendarCheck', label: 'Agenda' },
+  { icon: 'Globe', label: 'Web' },
   { icon: 'Star', label: 'Reseñas' },
 ] as const;
 const problems = [
-  ['Consultas que no terminan en cita', 'Mensajes que se enfrían antes de convertirse en cliente.'],
-  ['Mensajes fuera de horario', 'Una oportunidad puede llegar cuando ya has cerrado.'],
-  ['Seguimiento manual', 'Recordatorios, reseñas y reactivación consumen tiempo del equipo.'],
-  ['Presencia sin medición', 'No se sabe qué canal trae clientes de verdad.'],
+  ['Una web que se ha quedado atrás', 'Información antigua o una página que ya no cuenta bien lo que haces.'],
+  ['Redes que siempre quedan para luego', 'Entre clientes y tareas, cuesta encontrar tiempo para preparar contenido.'],
+  ['Google y reseñas sin atender', 'Horarios que cambian y opiniones que se acumulan sin respuesta.'],
+  ['Mensajes que se quedan pendientes', 'Consultas y solicitudes de cita que necesitan orden y una respuesta.'],
 ];
 ---
 <section class="section problem-section" aria-labelledby="problema-title">
   <div class="container">
     <p class="eyebrow">El problema</p>
-    <h2 id="problema-title">Todo funciona por separado.</h2>
-    <p class="section-intro">Google, redes, WhatsApp, agenda y reseñas suelen vivir cada uno por su lado. Tu cliente lo nota. Tu equipo también.</p>
-    <div class="fragments" role="img" aria-label="Google, redes, WhatsApp, agenda y reseñas, hoy separados, se conectan en Vialengo">
+    <h2 id="problema-title">Llevar un negocio ya ocupa el día.</h2>
+    <p class="section-intro">La web, las redes, Google y los mensajes también necesitan atención. Nos encargamos de coordinarlos para que tengas a quién acudir y sepas qué se está haciendo.</p>
+    <div class="fragments" role="img" aria-label="Google, redes, WhatsApp, web y reseñas, coordinados por Vialengo">
       <ul class="fragment-list" aria-hidden="true">
         {fragments.map((f) => <li><Icon name={f.icon} size={18} />{f.label}</li>)}
       </ul>
       <svg class="fan" viewBox="0 0 160 330" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         {[0, 1, 2, 3, 4].map((i) => <path d={`M0 ${33 + i * 66} C80 ${33 + i * 66}, 80 165, 160 165`} />)}
       </svg>
-      <div class="fragment-hub" aria-hidden="true"><img src={href('/brand/vialengo-symbol-on-dark.svg')} alt="" width="52" height="42" /><strong>Vialengo</strong><span>Todo conectado</span></div>
+      <div class="fragment-hub" aria-hidden="true"><img src={href('/brand/vialengo-symbol-on-dark.svg')} alt="" width="52" height="42" /><strong>Vialengo</strong><span>Un mismo contacto</span></div>
     </div>
     <ul class="problem-grid">{problems.map(([title, text]) => <li><h3>{title}</h3><p>{text}</p></li>)}</ul>
   </div>

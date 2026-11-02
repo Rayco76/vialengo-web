@@ -54,3 +54,28 @@ campo trampa (honeypot) y Turnstile opcional.
 3. Publicar el contenido de `dist/` (`public/.nojekyll` evita que Jekyll ignore `_astro/`).
 4. Con dominio propio, `public/CNAME` contiene el dominio (`vialengo.com`).
 5. El workflow `.github/workflows/deploy.yml` compila y publica en cada push a `main`. Las variables `PUBLIC_*` se definen en Settings → Secrets and variables → Actions → Variables (si `PUBLIC_SITE_URL` no existe, se usa `https://vialengo.com`).
+
+## Repaso de posicionamiento — noviembre de 2026
+
+La portada presenta Vialengo como un servicio que se encarga de la parte digital del
+negocio: web y mantenimiento, redes, Google y reputación, WhatsApp, citas y soluciones
+a medida. Los servicios aparecen tras la cabecera; las capturas de WhatsApp se muestran
+más abajo como un ejemplo concreto. Se conserva la identidad visual y los enlaces
+existentes (incluido #auditoria).
+
+El alcance, la frecuencia, el material aportado y las aprobaciones se acuerdan con cada
+negocio. No se promete publicación automática, conexión universal con agendas ni
+resultados garantizados. Google Business se actualiza manualmente; los desarrollos
+a medida se estudian y presupuestan antes. Los datos compartidos en src/content/
+y siteConfig.description alimentan Servicios, FAQ, Markdown, llms.txt y JSON-LD.
+
+Validación: ejecutar npm run build y revisar la portada y Servicios en ordenador y
+móvil. El formulario conserva sus modos y sigue desactivado en producción mientras
+falten el endpoint o los datos legales del titular.
+
+## Confianza y caso piloto
+
+La home incorpora la forma de trabajar y una presentación de Rayco González. El caso
+piloto conserva `/cases/dental-clinic-001/` y presenta proceso, galería pendiente y
+primeras señales de alcance con contexto. Ver [Contenido y autorizaciones](docs/contenido-y-autorizaciones.md)
+para sustituir la foto, añadir capturas reales y revisar la procedencia de las métricas.

@@ -1,8 +1,9 @@
 import { siteConfig } from '../config/site';
+import { founder, trust } from '../content/about';
 import { cases } from '../content/cases';
 import { faqs } from '../content/faqs';
 import { integrations } from '../content/integrations';
-import { loopSteps, processSteps } from '../content/process';
+import { processSteps } from '../content/process';
 import { solutions } from '../content/solutions';
 import { verticals } from '../content/verticals';
 import { absoluteUrl } from './url';
@@ -15,8 +16,8 @@ const integ = (items: { name: string; detail: string }[]) => list(items.map((i) 
 export function contactLine(): string {
   const { email } = siteConfig.contact;
   return email
-    ? `Escribe a ${email} o solicita la auditoría en ${absoluteUrl('/#auditoria')}.`
-    : `Solicitud de auditoría mediante el formulario de ${absoluteUrl('/#auditoria')} (el formulario aún no está activo y el email de contacto está pendiente de publicar).`;
+    ? `Escribe a ${email} o cuéntanos qué necesitas en ${absoluteUrl('/#auditoria')}.`
+    : `Consulta mediante el formulario de ${absoluteUrl('/#auditoria')} (el formulario aún no está activo y el email de contacto está pendiente de publicar).`;
 }
 
 export function homeMarkdown(): string {
@@ -26,11 +27,9 @@ export function homeMarkdown(): string {
 
 ${siteConfig.name} no instala el mismo sistema en todos los negocios: el servicio se adapta al sector, a las herramientas existentes, a la agenda, al proceso de atención y al volumen de cada negocio.
 
-## Growth loop
+## Acompañamiento digital
 
-${loopSteps.map((s, i) => `${i + 1}. **${s.title}**: ${s.text}`).join('\n')}
-
-Y vuelta a empezar: cada reseña aumenta la visibilidad.
+Acordamos qué llevamos por ti, qué material y aprobaciones necesitamos y con qué frecuencia trabajamos. Puedes empezar por un servicio o combinar varios. Mantenemos al día las áreas contratadas y valoramos nuevas necesidades contigo.
 
 ## Soluciones
 
@@ -40,13 +39,25 @@ ${solutions.map((s) => `- [${s.title}](${absoluteUrl(`/services/#${s.id}`)}): ${
 
 ${processSteps.map((s, i) => `${i + 1}. **${s.title}**: ${s.text}`).join('\n')}
 
+## ${trust.title}
+
+${trust.intro}
+
+${trust.principles.map((p) => `- **${p.title}**: ${p.text}`).join('\n')}
+
+## Sobre Vialengo
+
+${founder.paragraphs.join('\n\n')}
+
+${founder.name} · ${founder.role}
+
 ## Sectores
 
 ${verticals.map((v) => `- ${v.name}${v.status === 'planned' ? ' (preparado, sin página todavía)' : ''}: ${v.summary}`).join('\n')}
 
-## Resultados
+## Casos y primeras señales
 
-Primer proyecto en implementación. Todavía no se publican cifras de resultados.
+${cases.map((c) => `### [${c.title}](${absoluteUrl(`/cases/${c.slug}/`)})\n\n${c.summary}${c.initialSignals ? `\n\n${c.initialSignals.summary}\n\n${c.initialSignals.source} ${c.initialSignals.note}` : ''}`).join('\n\n')}
 
 ## Contacto
 
@@ -59,7 +70,7 @@ Más: [Servicios](${absoluteUrl('/services/')}) · [Vialengo para IA](${absolute
 export function servicesMarkdown(): string {
   return `# Servicios de ${siteConfig.name}
 
-> Presencia digital, redes sociales, WhatsApp, citas, reputación y automatización para negocios locales, adaptados a cada negocio.
+> Web y mantenimiento, redes sociales, Google Business y reputación, WhatsApp, citas y soluciones digitales a medida para negocios locales.
 
 ${solutions
   .map(
@@ -88,7 +99,13 @@ export function aiMarkdown(): string {
 
 ## Qué es ${siteConfig.name}
 
-${siteConfig.description} Es un servicio personalizado: no un producto de autoservicio.
+${siteConfig.description} Es un servicio personalizado: no un producto de autoservicio. Su fundador es ${founder.name}.
+
+## Forma de trabajar
+
+${trust.intro}
+
+${trust.principles.map((p) => `- **${p.title}**: ${p.text}`).join('\n')}
 
 ## Servicios
 
@@ -122,7 +139,7 @@ ${siteConfig.country.name}, en remoto. Sin oficina abierta al público.
 
 ## Modelo de servicio
 
-Servicio personalizado para negocios. No se publican precios; la auditoría inicial define el alcance.
+Servicio personalizado para negocios. No se publican precios; la primera conversación define el alcance.
 
 ## Estado de los proyectos
 

@@ -12,7 +12,7 @@ const isCurrent = (path: string) => !path.includes('#') && href(path) === curren
     <nav aria-label="Principal">
       {navLinks.map((link) => <a href={href(link.path)} aria-current={isCurrent(link.path) ? 'page' : undefined}>{link.label}</a>)}
     </nav>
-    <a class="button button-small" data-track-cta href={href('/#auditoria')}>Solicitar auditoría</a>
+    <a class="button button-small" data-track-cta href={href('/#auditoria')}>Hablemos</a>
     <details class="mobile-menu">
       <summary><span class="sr-only">Abrir menú</span><span aria-hidden="true">☰</span></summary>
       <nav aria-label="Principal móvil">

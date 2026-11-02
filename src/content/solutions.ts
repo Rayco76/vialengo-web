@@ -4,7 +4,7 @@
 export type Solution = {
   id: string;
   /** Nombre de icono Lucide registrado en components/Icon.astro. */
-  icon: 'MapPin' | 'Share2' | 'MessageCircle' | 'CalendarCheck' | 'Star' | 'Workflow';
+  icon: 'Globe' | 'MapPin' | 'Share2' | 'MessageCircle' | 'CalendarCheck' | 'Star' | 'Workflow';
   title: string;
   /** Una frase para tarjetas y listados. */
   short: string;
@@ -18,13 +18,14 @@ export type Solution = {
 export const solutions: Solution[] = [
   {
     id: 'presencia-digital',
-    icon: 'MapPin',
-    title: 'Presencia digital',
-    short: 'Google Business Profile, web y posicionamiento local para que te encuentren cuando te buscan.',
+    icon: 'Globe',
+    title: 'Web y presencia digital',
+    short: 'Creamos y mantenemos tu web para que explique bien tu negocio y sea fácil contactar.',
     summary:
-      'Revisamos y ordenamos cómo aparece tu negocio en Google y en tu web, para que quien te busca encuentre información clara y una forma fácil de contactar.',
+      'Creamos o mejoramos tu web y mantenemos su información al día. Cuidamos cómo presenta tu negocio, cómo se ve en el móvil y el camino para que alguien contacte contigo.',
     includes: [
-      'Ficha de Google Business Profile completa y actualizada.',
+      'Creación o mejora de una web adaptada a tu negocio.',
+      'Actualización de contenidos e información según el alcance acordado.',
       'Web sencilla, con la información útil y un camino claro para contactar.',
       'Posicionamiento local básico (SEO local).',
       'Revisión de cómo se ve el negocio en búsquedas y mapas.',
@@ -36,16 +37,16 @@ export const solutions: Solution[] = [
     id: 'redes-sociales',
     icon: 'Share2',
     title: 'Redes sociales',
-    short: 'Planificación, creación asistida y gestión de contenido con tu material real.',
+    short: 'Planificamos y preparamos tus contenidos para mantener las redes activas y cuidadas.',
     summary:
-      'Planificamos el contenido del mes y preparamos borradores a partir de lo que ya hace tu negocio, para mantener las redes activas sin que te lleve horas.',
+      'Nos ocupamos del calendario y de preparar los contenidos a partir de lo que ocurre en tu negocio. Acordamos contigo el tono, el material necesario y quién revisa y publica, para mantener las redes al día.',
     includes: [
       'Calendario mensual de contenidos.',
-      'Borradores de publicaciones con ayuda de IA.',
+      'Preparación de textos y propuestas de publicaciones.',
       'Reutilización de material real del negocio: fotos, novedades, equipo.',
       'Tono adaptado a tu negocio y a tu sector.',
     ],
-    depends: 'Nada se publica de forma automática: cada borrador lo revisa y publica una persona.',
+    depends: 'Acordamos las redes, la frecuencia, el material que aporta el negocio y quién revisa y publica. La publicación es manual, con revisión humana.',
   },
   {
     id: 'whatsapp-atencion',
@@ -83,27 +84,29 @@ export const solutions: Solution[] = [
   {
     id: 'reputacion',
     icon: 'Star',
-    title: 'Reputación',
-    short: 'Seguimiento de reseñas y borradores de respuesta que revisa una persona.',
+    title: 'Google y reputación',
+    short: 'Cuidamos tu ficha de Google Business y las respuestas a las reseñas de tus clientes.',
     summary:
-      'Seguimos las reseñas de Google de tu negocio y preparamos borradores de respuesta con tono cuidado, para que respondas con rapidez y criterio.',
+      'Mantenemos la información de tu ficha de Google Business y te ayudamos a cuidar tu reputación. Revisamos las reseñas y preparamos respuestas con el tono de tu negocio, siempre revisadas por una persona.',
     includes: [
+      'Revisión y actualización manual de la ficha de Google Business.',
       'Seguimiento de reseñas de Google.',
       'Borradores de respuesta adaptados al tono del negocio.',
       'Ayuda para pedir reseñas a clientes satisfechos.',
     ],
-    depends: 'Las respuestas las revisa y publica siempre una persona.',
+    depends: 'Necesitamos acceso autorizado a la ficha. Las actualizaciones se gestionan manualmente; las respuestas las revisa y publica siempre una persona.',
   },
   {
     id: 'automatizacion-ia',
     icon: 'Workflow',
-    title: 'Automatización e IA',
-    short: 'Flujos personalizados que se adaptan al funcionamiento de cada negocio.',
+    title: 'Soluciones a medida',
+    short: 'Estudiamos otras necesidades digitales y cómo resolver tareas que te quitan tiempo.',
     summary:
-      'Diseñamos flujos a medida: avisos, seguimientos, plantillas y borradores con IA, y una medición básica para saber qué funciona.',
+      'Si necesitas algo más, lo estudiamos contigo: mejorar un proceso, conectar herramientas o desarrollar una solución sencilla. Primero valoramos su utilidad y viabilidad; después acordamos el alcance y el presupuesto.',
     includes: [
-      'Flujos adaptados al proceso real del negocio.',
-      'Avisos y seguimientos, con plantillas de WhatsApp aprobadas cuando proceda.',
+      'Valoración de necesidades digitales fuera de los servicios habituales.',
+      'Propuesta de herramientas, automatizaciones o desarrollos según viabilidad.',
+      'Estudio de avisos y seguimientos según las herramientas disponibles.',
       'IA para borradores de reseñas y publicaciones, siempre con revisión humana.',
       'Medición básica: conversaciones, solicitudes y citas.',
     ],

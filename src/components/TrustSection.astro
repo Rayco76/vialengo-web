@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { trust } from '../content/about';
+---
+<section class="section trust-section" id="confianza" aria-labelledby="trust-title">
+  <div class="container">
+    <p class="eyebrow">Cómo cuidamos la colaboración</p>
+    <h2 id="trust-title">{trust.title}</h2>
+    <p class="section-intro trust-intro">{trust.intro}</p>
+    <div class="trust-grid">
+      {trust.principles.map((principle) => (
+        <article class="trust-card">
+          <span class="icon-box"><Icon name={principle.icon} size={23} /></span>
+          <h3>{principle.title}</h3>
+          <p>{principle.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

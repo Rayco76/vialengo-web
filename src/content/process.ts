@@ -1,8 +1,8 @@
 export const processSteps = [
-  { title: 'Auditamos', text: 'Revisamos cómo te encuentran, cómo atiendes y cómo haces el seguimiento hoy.' },
-  { title: 'Diseñamos a medida', text: 'Definimos qué tiene sentido para tu sector, tu agenda y tus herramientas.' },
-  { title: 'Conectamos y ponemos en marcha', text: 'Activamos solo lo necesario y formamos al equipo para usarlo.' },
-  { title: 'Medimos y mejoramos', text: 'Seguimos conversaciones, solicitudes y citas, y ajustamos lo que no funciona.' },
+  { title: 'Nos cuentas qué necesitas', text: 'Revisamos tu web, redes, Google y atención al cliente. Escuchamos qué te falta y qué te está quitando tiempo.' },
+  { title: 'Acordamos un plan', text: 'Definimos los servicios, las prioridades, la frecuencia de trabajo y el presupuesto. También qué material y aprobaciones necesitamos de ti.' },
+  { title: 'Nos ponemos con ello', text: 'Preparamos o mejoramos lo que hayas contratado: web, contenidos, ficha de Google o atención por WhatsApp. Te acompañamos en la puesta en marcha.' },
+  { title: 'Seguimos contigo', text: 'Mantenemos al día las áreas acordadas y revisamos contigo el trabajo. Si aparece otra necesidad digital, valoramos cómo resolverla.' },
 ];
 
 // Growth Loop: se muestra en la Home y se describe en /ai.

@@ -3,7 +3,17 @@ export type Faq = { q: string; a: string; home: boolean };
 export const faqs: Faq[] = [
   {
     q: '¿Qué es Vialengo?',
-    a: 'Un servicio personalizado que ayuda a negocios locales a captar clientes, automatizar su atención y mejorar su presencia digital: Google, redes sociales, WhatsApp, agenda y reseñas, conectados en un mismo sistema.',
+    a: 'Un servicio que se encarga de la parte digital de tu negocio: web, redes sociales, Google Business, reseñas, WhatsApp y citas. Acordamos qué necesitas, lo ponemos en marcha y mantenemos al día las áreas contratadas, con un mismo contacto.',
+    home: true,
+  },
+  {
+    q: '¿Puedo empezar solo por la web o las redes?',
+    a: 'Sí. Puedes contratar un servicio o combinar varios. Primero acordamos el alcance, la frecuencia y el presupuesto; después podemos valorar otras necesidades.',
+    home: true,
+  },
+  {
+    q: '¿Y si necesito otra solución digital?',
+    a: 'La estudiamos contigo. Revisamos qué quieres resolver, si las herramientas que ya tienes sirven y qué desarrollo o conexión sería viable. Cada propuesta se valora y presupuesta antes de empezar.',
     home: true,
   },
   {
@@ -28,7 +38,7 @@ export const faqs: Faq[] = [
   },
   {
     q: '¿Cuánto cuesta?',
-    a: 'Depende de los servicios y del tamaño del negocio, y por ahora no publicamos precios. La auditoría inicial sirve para definir el alcance y, después, el presupuesto.',
+    a: 'Depende de los servicios y del tamaño del negocio, y por ahora no publicamos precios. La primera conversación sirve para definir el alcance y, después, el presupuesto.',
     home: true,
   },
   {
