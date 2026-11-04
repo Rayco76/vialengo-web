@@ -29,7 +29,6 @@ jobs:
           # Se configuran en Settings → Secrets and variables → Actions → Variables.
           PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
           PUBLIC_BASE_PATH: ${{ vars.PUBLIC_BASE_PATH }}
-          PUBLIC_CONTACT_EMAIL: ${{ vars.PUBLIC_CONTACT_EMAIL }}
           PUBLIC_AUDIT_FORM_ENDPOINT: ${{ vars.PUBLIC_AUDIT_FORM_ENDPOINT }}
           PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
       - uses: actions/upload-pages-artifact@v3

@@ -10,7 +10,7 @@ const holder: [string, string | null][] = [
   ['Titular (nombre o razón social)', legal.holderName],
   ['NIF/CIF', legal.taxId],
   ['Domicilio', legal.address],
-  ['Datos registrales (si procede)', legal.registry],
+  ...(legal.registry ? [['Datos registrales', legal.registry] as [string, string]] : []),
   ['Email de contacto', legal.contactEmail],
 ];
 ---

@@ -1,20 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/LegalPage.astro';
-import Pending from '../components/Pending.astro';
-
+import { siteConfig } from '../config/site';
+import { href } from '../lib/url';
 ---
-<BaseLayout title="Aviso legal" description="Aviso legal de Vialengo (borrador pendiente de los datos del titular)." path="/aviso-legal/">
+<BaseLayout title="Aviso legal" description="Datos del titular y condiciones de uso del sitio web de Vialengo." path="/aviso-legal/">
   <main id="contenido">
-    <LegalPage title="Aviso legal" intro="Información sobre el titular de este sitio web. Documento en preparación.">
-      <section aria-labelledby="resto">
-        <h2 id="resto">Contenido pendiente</h2>
-        <ul>
-          <li>Condiciones de uso del sitio: <Pending /></li>
-          <li>Propiedad intelectual e industrial: <Pending /></li>
-          <li>Responsabilidad y enlaces a terceros: <Pending /></li>
-          <li>Legislación aplicable y jurisdicción: <Pending /></li>
-        </ul>
+    <LegalPage title="Aviso legal" intro="Información sobre el titular y las condiciones de uso de este sitio web.">
+      <p><strong>Última actualización: 2 de noviembre de 2026</strong></p>
+      <section aria-labelledby="objeto">
+        <h2 id="objeto">1. Objeto y uso del sitio</h2>
+        <p>Este sitio ofrece información sobre los servicios de Vialengo y permite solicitar contacto o una propuesta. El acceso es gratuito, sin perjuicio del coste de conexión que corresponda al usuario.</p>
+        <p>Los servicios profesionales se acuerdan mediante una propuesta o contrato específico. La navegación por esta web o el envío de una consulta no implican por sí solos la contratación de un servicio.</p>
+        <p>El usuario debe utilizar el sitio de forma lícita, respetando los derechos de terceros, y abstenerse de introducir código malicioso, realizar accesos no autorizados o alterar su funcionamiento. No debe remitir datos médicos ni datos de pacientes a través de los canales comerciales.</p>
+      </section>
+      <section aria-labelledby="propiedad">
+        <h2 id="propiedad">2. Propiedad intelectual e industrial</h2>
+        <p>Los contenidos propios de Vialengo están protegidos por la normativa de propiedad intelectual e industrial. Los materiales, marcas, imágenes, fuentes y componentes de terceros conservan los derechos de sus titulares y las licencias que les resulten aplicables.</p>
+        <p>El acceso al sitio no concede derechos de explotación sobre sus contenidos. Su reproducción, distribución o modificación requiere autorización cuando sea legalmente exigible, sin perjuicio de los usos permitidos por la ley y de las licencias aplicables.</p>
+      </section>
+      <section aria-labelledby="responsabilidad">
+        <h2 id="responsabilidad">3. Información, disponibilidad y enlaces</h2>
+        <p>Vialengo procura mantener la información actualizada y el sitio disponible. Si detectas un error o una incidencia, puedes comunicarlo a <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>.</p>
+        <p>Las descripciones de servicios tienen carácter informativo. Su alcance, precio, plazos y condiciones se concretan antes de contratar. Los ejemplos y casos publicados no garantizan resultados para otros negocios.</p>
+        <p>Los enlaces a sitios de terceros facilitan información o acceso a sus servicios. Dichos sitios están sujetos a sus propias condiciones y políticas. Vialengo atenderá los avisos sobre enlaces que pudieran vulnerar derechos y actuará conforme a las obligaciones que le correspondan.</p>
+        <p>Estas condiciones no excluyen ni limitan las responsabilidades que no puedan excluirse o limitarse conforme a la legislación aplicable.</p>
+      </section>
+      <section aria-labelledby="privacidad">
+        <h2 id="privacidad">4. Protección de datos</h2>
+        <p>El tratamiento de datos personales se explica en la <a href={href('/privacidad/')}>política de privacidad</a>. Las consultas y solicitudes de derechos se atienden en <a href={`mailto:${siteConfig.legal.contactEmail}`}>{siteConfig.legal.contactEmail}</a>.</p>
+      </section>
+      <section aria-labelledby="legislacion">
+        <h2 id="legislacion">5. Legislación aplicable</h2>
+        <p>Este sitio y sus condiciones de uso se rigen por la legislación española, sin perjuicio de las normas imperativas que resulten aplicables. Cualquier controversia se someterá a los juzgados y tribunales competentes conforme a la normativa aplicable, respetando los derechos de las personas consumidoras cuando corresponda.</p>
       </section>
     </LegalPage>
   </main>

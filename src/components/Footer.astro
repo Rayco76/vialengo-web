@@ -12,7 +12,7 @@ import { href } from '../lib/url';
       <a href={href('/ai/')}>Vialengo para IA</a>
       <a href={href('/privacidad/')}>Privacidad</a>
       <a href={href('/aviso-legal/')}>Aviso legal</a>
-      <a href={href('/#auditoria')}>Contacto</a>
+      <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
     </nav>
   </div>
 </footer>

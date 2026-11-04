@@ -1,41 +1,163 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegalPage from '../components/LegalPage.astro';
-import Pending from '../components/Pending.astro';
+import PageHeader from '../components/PageHeader.astro';
 import { siteConfig } from '../config/site';
-
 ---
-<BaseLayout title="Política de privacidad" description="Política de privacidad de Vialengo (borrador pendiente de los datos del titular)." path="/privacidad/">
+<BaseLayout title="Política de privacidad" description="Información sobre el tratamiento de datos personales, las integraciones y los derechos de las personas interesadas en Vialengo." path="/privacidad/">
   <main id="contenido">
-    <LegalPage title="Política de privacidad" intro="Qué datos recoge este sitio y para qué. Documento en preparación.">
-      <section aria-labelledby="datos">
-        <h2 id="datos">Qué datos recoge el formulario de auditoría</h2>
+    <PageHeader eyebrow="Legal" title="Política de privacidad" intro="Vialengo — Soluciones digitales y automatización" />
+    <div class="container prose">
+      <p><strong>Última actualización: 2 de noviembre de 2026</strong></p>
+      <section aria-labelledby="privacidad-1">
+        <h2 id="privacidad-1">1. Responsable del tratamiento</h2>
+        <p>En cumplimiento del Reglamento (UE) 2016/679, General de Protecci&#243;n de Datos (RGPD), y de la Ley Org&#225;nica 3/2018, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales (LOPDGDD), se informa de que el responsable del tratamiento de los datos personales recogidos directamente a trav&#233;s de este sitio web es:</p>
         <ul>
-          <li>Nombre, nombre del negocio y email (obligatorios).</li>
-          <li>Teléfono, web y un mensaje libre (opcionales).</li>
-        </ul>
-        <p>El formulario no solicita datos de salud ni datos de pacientes o clientes del negocio.</p>
-      </section>
-      <section aria-labelledby="finalidad">
-        <h2 id="finalidad">Finalidad</h2>
-        <p>Responder a la solicitud de auditoría enviada por la persona interesada.</p>
-      </section>
-      <section aria-labelledby="terceros">
-        <h2 id="terceros">Servicios de terceros que usa este sitio</h2>
-        <ul>
-          {siteConfig.form.turnstileSiteKey && <li>Cloudflare Turnstile: verificación anti-spam en el formulario.</li>}
-          <li>Servicio que recibe el formulario: <Pending /></li>
+          <li>Nombre comercial: Vialengo.</li>
+          <li>Titular: {siteConfig.legal.holderName}.</li>
+          <li>NIF: {siteConfig.legal.taxId}.</li>
+          <li>Domicilio profesional: {siteConfig.legal.address}.</li>
+          <li>Correo electr&#243;nico: <a href={`mailto:${siteConfig.legal.contactEmail}`}>{siteConfig.legal.contactEmail}</a>.</li>
+          <li>Sitio web: <a href={siteConfig.origin}>{siteConfig.origin}</a>.</li>
         </ul>
       </section>
-      <section aria-labelledby="pendiente">
-        <h2 id="pendiente">Resto del contenido</h2>
+      <section aria-labelledby="privacidad-2">
+        <h2 id="privacidad-2">2. Datos personales que tratamos</h2>
+        <p>En funci&#243;n de la relaci&#243;n que se mantenga con Vialengo, podr&#225;n tratarse las siguientes categor&#237;as de informaci&#243;n:</p>
         <ul>
-          <li>Base jurídica del tratamiento: <Pending /></li>
-          <li>Plazo de conservación: <Pending /></li>
-          <li>Destinatarios y transferencias internacionales: <Pending /></li>
-          <li>Derechos de las personas y cómo ejercerlos; reclamación ante la AEPD: <Pending /></li>
+          <li>Datos identificativos y de contacto: nombre, correo electr&#243;nico, tel&#233;fono y empresa.</li>
+          <li>Informaci&#243;n proporcionada mediante formularios, correos electr&#243;nicos o comunicaciones profesionales.</li>
+          <li>Datos necesarios para elaborar propuestas comerciales, prestar servicios y gestionar la facturaci&#243;n.</li>
+          <li>Datos t&#233;cnicos y de navegaci&#243;n, cuando sean recogidos mediante los sistemas utilizados por el sitio web.</li>
+          <li>Informaci&#243;n necesaria para gestionar las cuentas e integraciones de los servicios digitales contratados.</li>
         </ul>
+        <p>Se solicita a los usuarios que no env&#237;en informaci&#243;n m&#233;dica o especialmente sensible a trav&#233;s de los formularios comerciales de Vialengo.</p>
+        <p>Los datos se&#241;alados como obligatorios en cada formulario ser&#225;n necesarios para atender la solicitud correspondiente. Si no se facilitan, es posible que no podamos tramitarla. Los dem&#225;s datos se aportar&#225;n de forma voluntaria.</p>
       </section>
-    </LegalPage>
+      <section aria-labelledby="privacidad-3">
+        <h2 id="privacidad-3">3. Finalidades y bases jur&#237;dicas</h2>
+        <p>Los datos personales podr&#225;n utilizarse para:</p>
+        <p><strong>Atender consultas y solicitudes comerciales.</strong> Responder a mensajes, solicitudes de informaci&#243;n, presupuestos o auditor&#237;as digitales. La base jur&#237;dica ser&#225;, seg&#250;n corresponda, la aplicaci&#243;n de medidas precontractuales solicitadas por el interesado o el inter&#233;s leg&#237;timo en atender comunicaciones profesionales, previa ponderaci&#243;n cuando resulte aplicable.</p>
+        <p><strong>Prestar los servicios contratados.</strong> Gestionar proyectos de desarrollo web, marketing digital, automatizaci&#243;n e integraci&#243;n de herramientas tecnol&#243;gicas. La base jur&#237;dica ser&#225; la ejecuci&#243;n del contrato correspondiente. Cuando el interlocutor act&#250;e en representaci&#243;n de una empresa, el tratamiento de sus datos de contacto profesional se basar&#225;, cuando proceda, en el inter&#233;s leg&#237;timo de mantener la relaci&#243;n con dicha empresa.</p>
+        <p><strong>Gestionar obligaciones administrativas y fiscales.</strong> Emitir facturas, llevar registros y cumplir obligaciones legales. La base jur&#237;dica ser&#225; el cumplimiento de las obligaciones fiscales, contables y mercantiles aplicables.</p>
+        <p><strong>Enviar comunicaciones comerciales.</strong> Informar sobre servicios, novedades u ofertas de Vialengo. Los env&#237;os por correo electr&#243;nico o medios equivalentes se realizar&#225;n con el consentimiento del destinatario o, cuando exista una relaci&#243;n contractual previa, dentro de la excepci&#243;n legal para servicios propios similares a los contratados. Se ofrecer&#225; una v&#237;a sencilla y gratuita para darse de baja en cada comunicaci&#243;n. La base jur&#237;dica ser&#225; el consentimiento o, cuando resulte aplicable dicha excepci&#243;n, el inter&#233;s leg&#237;timo, respetando la normativa de comunicaciones comerciales.</p>
+        <p><strong>Garantizar la seguridad de los sistemas.</strong> Prevenir accesos no autorizados, detectar incidencias y proteger el funcionamiento de los servicios. La base jur&#237;dica podr&#225; ser el inter&#233;s leg&#237;timo de Vialengo en garantizar la seguridad, sujeto a la ponderaci&#243;n correspondiente.</p>
+      </section>
+      <section aria-labelledby="privacidad-4">
+        <h2 id="privacidad-4">4. Servicios de automatizaci&#243;n e integraciones</h2>
+        <p>Vialengo desarrolla y presta soluciones tecnol&#243;gicas que pueden integrarse con plataformas de terceros, entre ellas:</p>
+        <ul>
+          <li>WhatsApp Business Platform.</li>
+          <li>Facebook e Instagram, mediante los servicios de Meta.</li>
+          <li>Google Calendar y otros servicios de Google.</li>
+          <li>Sistemas de gesti&#243;n de citas y atenci&#243;n al cliente.</li>
+          <li>Herramientas de automatizaci&#243;n y procesamiento mediante inteligencia artificial, cuando est&#233;n habilitadas y con el alcance indicado en el apartado 13.</li>
+        </ul>
+        <p>En funci&#243;n del servicio contratado y de los permisos autorizados, estas herramientas pueden permitir el tratamiento de mensajes, identificadores de usuarios, informaci&#243;n de contacto, solicitudes de citas, datos de agenda, publicaciones, estad&#237;sticas y otros datos necesarios para la prestaci&#243;n del servicio.</p>
+        <p>El acceso a estas plataformas estar&#225; limitado a los permisos y funcionalidades necesarios para cada integraci&#243;n. La menci&#243;n de una plataforma no implica que todas sus funcionalidades est&#233;n disponibles o activadas.</p>
+        <p>Los tratamientos realizados por los proveedores externos estar&#225;n tambi&#233;n sujetos a sus propias condiciones y pol&#237;ticas de privacidad, seg&#250;n el papel que desempe&#241;en en cada tratamiento.</p>
+      </section>
+      <section aria-labelledby="privacidad-5">
+        <h2 id="privacidad-5">5. Tratamiento de datos por cuenta de clientes</h2>
+        <p>Cuando Vialengo presta servicios de automatizaci&#243;n, gesti&#243;n de comunicaciones o software a empresas y cl&#237;nicas, puede actuar como encargado del tratamiento.</p>
+        <p>En estos casos:</p>
+        <ul>
+          <li>El cliente determina las finalidades y bases jur&#237;dicas del tratamiento de los datos de sus propios usuarios o pacientes.</li>
+          <li>Vialengo trata los datos por cuenta del cliente, de acuerdo con las instrucciones documentadas aplicables.</li>
+          <li>Se formalizar&#225; el correspondiente acuerdo de encargo de tratamiento antes de iniciar los tratamientos que lo requieran.</li>
+          <li>El acceso a los datos se limitar&#225; a lo necesario para prestar el servicio contratado.</li>
+          <li>Los datos no podr&#225;n utilizarse para finalidades propias incompatibles con las instrucciones del cliente.</li>
+          <li>Se establecer&#225;n las condiciones de confidencialidad, seguridad, subcontrataci&#243;n y conservaci&#243;n que correspondan.</li>
+        </ul>
+        <p>En servicios destinados a cl&#237;nicas sanitarias, Vialengo limitar&#225; el tratamiento a los datos imprescindibles para las funcionalidades contratadas, como comunicaciones administrativas y solicitudes de cita.</p>
+        <p>Cuando se traten datos relativos a la salud, se aplicar&#225;n las garant&#237;as adicionales exigidas por la normativa vigente. La cl&#237;nica responsable deber&#225; determinar, adem&#225;s de la base jur&#237;dica del tratamiento, la condici&#243;n que permita tratar esta categor&#237;a de datos conforme al art&#237;culo 9 del RGPD.</p>
+        <p>Las solicitudes relativas a los datos de pacientes deber&#225;n dirigirse, con car&#225;cter general, a la cl&#237;nica responsable de dichos datos, sin perjuicio de la colaboraci&#243;n de Vialengo para atenderlas conforme a sus obligaciones.</p>
+      </section>
+      <section aria-labelledby="privacidad-6">
+        <h2 id="privacidad-6">6. Destinatarios y proveedores tecnol&#243;gicos</h2>
+        <p>Vialengo utiliza proveedores tecnol&#243;gicos con funciones diferentes seg&#250;n el servicio:</p>
+        <ul>
+          <li>GitHub Pages, para publicar el sitio web de Vialengo. El proveedor puede registrar datos t&#233;cnicos de acceso, incluida la direcci&#243;n IP, por motivos de seguridad.</li>
+          <li>DonDominio, para alojar el buz&#243;n de correo del dominio vialengo.com y gestionar la recepci&#243;n y el env&#237;o de mensajes.</li>
+          <li>Render, para ejecutar la aplicaci&#243;n ClinicGrowth y procesar las comunicaciones y operaciones de sus funcionalidades habilitadas.</li>
+          <li>Aiven, para alojar la base de datos PostgreSQL de ClinicGrowth.</li>
+          <li>Meta Platforms, para las integraciones de WhatsApp, Facebook e Instagram efectivamente autorizadas.</li>
+          <li>Google, cuando se habiliten integraciones como Google Calendar o Google Business.</li>
+          <li>OpenAI, cuando se habilite la generaci&#243;n de borradores revisados por una persona, con el alcance del apartado 13.</li>
+        </ul>
+        <p>Los datos de las consultas comerciales por correo no se incorporan autom&#225;ticamente a la base de datos del chatbot. Cada proveedor interviene &#250;nicamente en los tratamientos correspondientes al servicio que presta.</p>
+        <p>Estos proveedores tendr&#225;n acceso &#250;nicamente a los datos necesarios seg&#250;n el servicio prestado, los acuerdos aplicables y las funciones habilitadas. Cuando act&#250;en como encargados o subencargados, se establecer&#225;n los acuerdos y autorizaciones exigibles.</p>
+        <p>Los datos tambi&#233;n podr&#225;n comunicarse a las administraciones p&#250;blicas cuando exista una obligaci&#243;n legal.</p>
+        <p>Vialengo no comercializa bases de datos personales de clientes o pacientes.</p>
+      </section>
+      <section aria-labelledby="privacidad-7">
+        <h2 id="privacidad-7">7. Transferencias internacionales</h2>
+        <p>Algunas plataformas tecnol&#243;gicas pueden implicar accesos o transferencias de datos personales fuera del Espacio Econ&#243;mico Europeo.</p>
+        <p>Cuando estas transferencias sean aplicables, deber&#225;n realizarse conforme a los mecanismos previstos en el RGPD, como decisiones de adecuaci&#243;n o garant&#237;as apropiadas, incluidas las cl&#225;usulas contractuales tipo cuando correspondan, y las medidas complementarias que resulten necesarias.</p>
+        <p>La informaci&#243;n espec&#237;fica sobre los pa&#237;ses de destino, los proveedores y los mecanismos aplicables deber&#225; corresponderse con los servicios efectivamente utilizados. Puede solicitarse informaci&#243;n sobre las garant&#237;as aplicables y la forma de obtener una copia a trav&#233;s de <a href={`mailto:${siteConfig.legal.contactEmail}`}>{siteConfig.legal.contactEmail}</a>.</p>
+      </section>
+      <section aria-labelledby="privacidad-8">
+        <h2 id="privacidad-8">8. Conservaci&#243;n de los datos</h2>
+        <p>Los datos personales se conservar&#225;n durante el tiempo necesario para cumplir las finalidades para las que fueron recogidos y, posteriormente, durante los plazos exigidos por la legislaci&#243;n aplicable o necesarios para atender posibles responsabilidades.</p>
+        <p>En particular:</p>
+        <ul>
+          <li>Las consultas comerciales que no den lugar a una contrataci&#243;n se conservar&#225;n durante su atenci&#243;n y, como m&#225;ximo, durante 12 meses desde el &#250;ltimo contacto. Transcurrido ese plazo se suprimir&#225;n, salvo que deban conservarse bloqueadas para cumplir una obligaci&#243;n legal o atender posibles responsabilidades.</li>
+          <li>Los datos relacionados con contratos y facturaci&#243;n se conservar&#225;n conforme a los plazos legales aplicables.</li>
+          <li>Los datos utilizados para comunicaciones comerciales se conservar&#225;n hasta la retirada del consentimiento o la oposici&#243;n, seg&#250;n corresponda, sin perjuicio de conservar la informaci&#243;n m&#237;nima necesaria para respetar la baja y acreditar el cumplimiento de las obligaciones aplicables.</li>
+          <li>Los datos tratados por cuenta de clientes se conservar&#225;n seg&#250;n los acuerdos de prestaci&#243;n de servicios y encargo de tratamiento. Al finalizar el servicio se devolver&#225;n o suprimir&#225;n conforme a lo acordado, salvo obligaci&#243;n legal de conservaci&#243;n.</li>
+          <li>Los datos asociados a integraciones podr&#225;n eliminarse o desvincularse cuando finalice la prestaci&#243;n del servicio, sin perjuicio de las obligaciones legales aplicables. Desconectar una integraci&#243;n no implica por s&#237; solo borrar los datos que conserve la plataforma de origen.</li>
+        </ul>
+        <p>Cuando proceda, los datos se mantendr&#225;n bloqueados durante los plazos de responsabilidad legal y se suprimir&#225;n al finalizar dichos plazos.</p>
+      </section>
+      <section aria-labelledby="privacidad-9">
+        <h2 id="privacidad-9">9. Seguridad y confidencialidad</h2>
+        <p>Vialengo adoptar&#225; medidas t&#233;cnicas y organizativas apropiadas al riesgo para proteger los datos personales frente a accesos no autorizados, p&#233;rdidas, alteraciones o divulgaciones indebidas.</p>
+        <p>Las medidas concretas se determinar&#225;n en funci&#243;n de la naturaleza de los datos, los sistemas utilizados y los riesgos de cada tratamiento.</p>
+        <p>Cuando corresponda, se establecer&#225;n controles de acceso, procedimientos de gesti&#243;n de incidencias y obligaciones de confidencialidad para quienes tengan acceso a datos personales.</p>
+      </section>
+      <section aria-labelledby="privacidad-10">
+        <h2 id="privacidad-10">10. Derechos de las personas interesadas</h2>
+        <p>Las personas interesadas podr&#225;n ejercer los derechos que les reconoce la legislaci&#243;n, entre ellos:</p>
+        <ul>
+          <li>Acceso a sus datos personales.</li>
+          <li>Rectificaci&#243;n de datos inexactos.</li>
+          <li>Supresi&#243;n de sus datos cuando proceda.</li>
+          <li>Limitaci&#243;n del tratamiento.</li>
+          <li>Oposici&#243;n al tratamiento.</li>
+          <li>Portabilidad de los datos, cuando corresponda.</li>
+          <li>Retirada del consentimiento en cualquier momento, sin afectar a la licitud del tratamiento anterior.</li>
+        </ul>
+        <p>Para ejercer estos derechos se podr&#225; contactar con:</p>
+        <p><strong><a href={`mailto:${siteConfig.legal.contactEmail}`}>{siteConfig.legal.contactEmail}</a></strong></p>
+        <p>La solicitud deber&#225; proporcionar la informaci&#243;n necesaria para identificar al solicitante y tramitar el derecho correspondiente. Solo se solicitar&#225; documentaci&#243;n adicional de identidad cuando resulte necesaria.</p>
+        <p>Tambi&#233;n se podr&#225; presentar una reclamaci&#243;n ante la Agencia Espa&#241;ola de Protecci&#243;n de Datos, a trav&#233;s de <a href="https://www.aepd.es">www.aepd.es</a>.</p>
+      </section>
+      <section aria-labelledby="privacidad-11">
+        <h2 id="privacidad-11">11. Datos obtenidos mediante plataformas de Meta</h2>
+        <p>Cuando un cliente autoriza la conexi&#243;n de cuentas de Facebook, Instagram o WhatsApp a herramientas gestionadas por Vialengo, podr&#225;n tratarse los datos facilitados por las API de Meta seg&#250;n los permisos concedidos.</p>
+        <p>Estos datos se utilizar&#225;n exclusivamente para las funcionalidades autorizadas y contratadas, como la gesti&#243;n de comunicaciones, publicaciones, atenci&#243;n al cliente y estad&#237;sticas, siempre que est&#233;n efectivamente habilitadas.</p>
+        <p>Las autorizaciones podr&#225;n revocarse mediante las herramientas de gesti&#243;n de las plataformas correspondientes.</p>
+        <p>Las solicitudes de eliminaci&#243;n de datos relacionados con estas integraciones podr&#225;n enviarse a <strong><a href={`mailto:${siteConfig.legal.contactEmail}`}>{siteConfig.legal.contactEmail}</a></strong>, indicando la cuenta o integraci&#243;n afectada. No deben enviarse contrase&#241;as ni tokens de acceso.</p>
+        <p>Vialengo tramitar&#225; las solicitudes que le correspondan como responsable y colaborar&#225; con las empresas clientes cuando act&#250;e como encargado del tratamiento.</p>
+      </section>
+      <section aria-labelledby="privacidad-12">
+        <h2 id="privacidad-12">12. Cookies y tecnolog&#237;as similares</h2>
+        <p>La versi&#243;n actual de este sitio no incorpora Google Analytics, el p&#237;xel de Meta ni cookies propias de publicidad o medici&#243;n de audiencia. Las fuentes se sirven desde el propio sitio.</p>
+        <p>La aplicaci&#243;n puede generar eventos de interacci&#243;n dentro del navegador, sin enviarlos por s&#237; misma a un servicio externo de anal&#237;tica. El alojamiento puede mantener registros t&#233;cnicos de acceso para la seguridad del servicio, seg&#250;n lo indicado en el apartado 6.</p>
+        <p>Si se habilitan funcionalidades que utilicen cookies o tecnolog&#237;as similares, se facilitar&#225; informaci&#243;n sobre las que se utilicen efectivamente. Cuando no est&#233;n exentas del requisito de consentimiento, se solicitar&#225; dicho consentimiento antes de activarlas.</p>
+      </section>
+      <section aria-labelledby="privacidad-13">
+        <h2 id="privacidad-13">13. Decisiones automatizadas e inteligencia artificial</h2>
+        <p>Los servicios de Vialengo pueden incluir automatizaciones basadas en reglas para facilitar la atenci&#243;n inicial, recoger solicitudes de cita o gestionar comunicaciones administrativas, seg&#250;n las funcionalidades contratadas.</p>
+        <p>En la plataforma ClinicGrowth, la inteligencia artificial se limita a generar borradores de respuestas a rese&#241;as y de publicaciones para redes sociales, incluida su adaptaci&#243;n para difusi&#243;n local. Una persona revisa y decide su publicaci&#243;n; estos borradores no se publican autom&#225;ticamente.</p>
+        <p>La inteligencia artificial no forma parte del bot de WhatsApp ni ejecuta operaciones de agenda. Estas herramientas no proporcionan diagn&#243;sticos ni consejos de tratamiento. Las decisiones cl&#237;nicas corresponden a los profesionales sanitarios responsables.</p>
+        <p>Las funcionalidades actuales descritas no est&#225;n destinadas a adoptar decisiones exclusivamente automatizadas con efectos jur&#237;dicos o significativamente similares sobre las personas. Si se incorporan tratamientos de este tipo, se facilitar&#225; la informaci&#243;n adicional y se establecer&#225;n las garant&#237;as exigidas por la normativa antes de su puesta en funcionamiento.</p>
+      </section>
+      <section aria-labelledby="privacidad-14">
+        <h2 id="privacidad-14">14. Modificaciones de esta pol&#237;tica</h2>
+        <p>Vialengo podr&#225; actualizar esta pol&#237;tica de privacidad para adaptarla a modificaciones normativas, cambios en sus servicios o nuevas funcionalidades tecnol&#243;gicas.</p>
+        <p>La versi&#243;n vigente estar&#225; disponible en:</p>
+        <p><a href={`${siteConfig.origin}/privacidad/`}>{siteConfig.origin}/privacidad/</a></p>
+      </section>
+    </div>
   </main>
 </BaseLayout>

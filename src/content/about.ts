@@ -29,7 +29,7 @@ export const founder = {
     'Soy Rayco, fundador de Vialengo. Trabajo con cada clínica para ordenar su presencia digital, automatizar lo repetitivo y mantener el control humano donde importa: la atención a pacientes y las decisiones del negocio.',
     'Mi objetivo no es llenar tus canales de herramientas o publicaciones sin sentido. Es construir un sistema sencillo, entendible y útil para que tu clínica pueda centrarse en atender bien.',
   ],
-  // FOTO DE RAYCO: guardar en public/team/rayco.webp y cambiar src por
-  // '/team/rayco.webp'. Con null se muestra un placeholder, nunca una foto ficticia.
-  photo: { src: null as string | null, alt: 'Rayco González, fundador de Vialengo' },
+  // Foto temporal (selfie) hasta tener la profesional: sustituir public/team/rayco.webp
+  // (600×800, 3:4). Con src null se muestra un placeholder, nunca una foto ficticia.
+  photo: { src: '/team/rayco.webp' as string | null, alt: 'Rayco González, fundador de Vialengo' },
 };

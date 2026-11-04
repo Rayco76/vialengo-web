@@ -6,6 +6,7 @@
 // (páginas legales marcadas como borrador y formulario desactivado en producción).
 
 const env = import.meta.env;
+const contactEmail = 'hola@vialengo.com';
 
 const origin = String(env.PUBLIC_SITE_URL || 'https://vialengo.com').replace(/\/+$/, '');
 
@@ -17,12 +18,12 @@ export const siteConfig = {
   locale: 'es-ES',
   lang: 'es',
   country: { code: 'ES', name: 'España' },
-  // Dominio sin barra final. PENDIENTE: confirmar que vialengo.com es el dominio definitivo.
+  // Dominio público sin barra final.
   origin,
 
   contact: {
-    // PENDIENTE: email público de contacto (variable PUBLIC_CONTACT_EMAIL).
-    email: (env.PUBLIC_CONTACT_EMAIL as string | undefined) || null,
+    // Un único buzón para consultas, clientes y privacidad.
+    email: contactEmail,
     // Solo si se quiere publicar un teléfono. No se muestra mientras sea null.
     phone: null as string | null,
   },
@@ -32,13 +33,13 @@ export const siteConfig = {
   social: [] as { name: string; url: string }[],
 
   // Datos del titular para Aviso legal y Política de privacidad (LSSI-CE y RGPD).
-  // PENDIENTE: los debe aportar el propietario. `complete` se calcula solo.
+  // Datos confirmados en ClinicOS_Work/Legal. `complete` se calcula solo.
   legal: {
-    holderName: null as string | null, // nombre o razón social
-    taxId: null as string | null, // NIF/CIF
-    address: null as string | null, // domicilio
+    holderName: "Rayco Rivero Gonzalez" as string | null, // nombre o razón social
+    taxId: "45725450R" as string | null, // NIF/CIF
+    address: "Avenida Independencia 45, 28701 San Sebastián de los Reyes, Madrid" as string | null, // domicilio
     registry: null as string | null, // datos registrales, si es sociedad
-    contactEmail: null as string | null, // email para ejercer derechos RGPD
+    contactEmail, // email para ejercer derechos RGPD
   },
 
   // Formulario de auditoría (endpoint externo; el sitio no tiene backend).

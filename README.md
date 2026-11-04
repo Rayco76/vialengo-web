@@ -33,7 +33,7 @@ No hay tests automatizados; `npm run build` ejecuta `astro check` (tipos y plant
 ## Variables de entorno
 
 Ver `.env.example`. Todas son públicas (`PUBLIC_*`): `PUBLIC_SITE_URL`, `PUBLIC_BASE_PATH`,
-`PUBLIC_CONTACT_EMAIL`, `PUBLIC_AUDIT_FORM_ENDPOINT`, `PUBLIC_TURNSTILE_SITE_KEY`.
+`PUBLIC_AUDIT_FORM_ENDPOINT`, `PUBLIC_TURNSTILE_SITE_KEY`.
 
 ## Formulario de auditoría
 
@@ -79,3 +79,26 @@ La home incorpora la forma de trabajar y una presentación de Rayco González. E
 piloto conserva `/cases/dental-clinic-001/` y presenta proceso, galería pendiente y
 primeras señales de alcance con contexto. Ver [Contenido y autorizaciones](docs/contenido-y-autorizaciones.md)
 para sustituir la foto, añadir capturas reales y revisar la procedencia de las métricas.
+
+## Política de privacidad
+
+`/privacidad/` contiene los 14 apartados del documento de
+`../ClinicOS_Work/Legal/POLITICA_DE_PRIVACIDAD.md`, actualizado el 2 de noviembre
+de 2026. Los datos identificativos y el correo para ejercer derechos proceden de
+`src/config/site.ts`. Mantener el texto de la página y el documento de trabajo
+sincronizados cuando cambie la política. El aviso legal incluye las condiciones generales de uso del sitio.
+
+Los datos legales están configurados. El formulario sigue necesitando un endpoint
+para funcionar en producción; este cambio no configura ningún servicio de recepción.
+
+El correo único para contacto comercial, clientes y privacidad es
+`hola@vialengo.com`, definido una sola vez en `src/config/site.ts`. No se toma de
+variables de entorno para evitar diferencias entre los datos legales y el contacto.
+Se muestra también en el pie de todas las páginas y en las versiones Markdown y
+los datos estructurados que consumen la configuración central.
+
+Las consultas sin contratación se conservan como máximo 12 meses desde el último
+contacto. Es un procedimiento de gestión del buzón; no existe un borrado automático
+implementado ni se aplica ese plazo de forma general a los datos de pacientes.
+Los proveedores y verificaciones pendientes están en
+`../ClinicOS_Work/Legal/README.md`.
