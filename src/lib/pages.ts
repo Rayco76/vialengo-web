@@ -3,6 +3,8 @@ import { verticalPages } from '../content/verticals';
 
 // Páginas públicas indexables: alimentan sitemap.xml y llms.txt.
 // /tools y /resources existen pero no están aquí a propósito (todavía sin contenido propio).
+// /privacidad y /aviso-legal tampoco: llevan noindex para que el NIF y el domicilio del
+// titular no aparezcan en buscadores; siguen enlazadas desde el pie, como exige la LSSI.
 export type PageEntry = { path: string; title: string; description: string };
 
 export const pages: PageEntry[] = [
@@ -12,6 +14,4 @@ export const pages: PageEntry[] = [
   { path: '/cases/', title: 'Casos', description: 'Estado del primer proyecto, sin resultados publicados todavía.' },
   ...verticalPages.map((v) => ({ path: `/sectores/${v.slug}/`, title: v.name, description: v.summary })),
   ...cases.map((c) => ({ path: `/cases/${c.slug}/`, title: c.title, description: c.summary })),
-  { path: '/privacidad/', title: 'Política de privacidad', description: 'Política de privacidad (borrador pendiente de datos del titular).' },
-  { path: '/aviso-legal/', title: 'Aviso legal', description: 'Aviso legal (borrador pendiente de datos del titular).' },
 ];

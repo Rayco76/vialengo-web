@@ -33,11 +33,6 @@ ${verticalPages.map((v) => link(v.name, `/sectores/${v.slug}/`, v.summary)).join
 ${link('Casos', '/cases/', 'caso piloto: proceso y primeras señales de alcance, sin atribución de pacientes')}
 ${cases.map((c) => link(c.title, `/cases/${c.slug}/`, c.summary)).join('\n')}
 
-## Legal
-
-${link('Política de privacidad', '/privacidad/', 'en preparación')}
-${link('Aviso legal', '/aviso-legal/', 'en preparación')}
-
 ## Optional
 
 ${link('Home en Markdown', '/index.md', 'versión Markdown de la página principal')}

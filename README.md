@@ -29,6 +29,7 @@ No hay tests automatizados; `npm run build` ejecuta `astro check` (tipos y plant
 - **Nuevo caso**: añadir objeto en `cases.ts`; `/cases/<slug>/`. Rellenar `metrics` solo con datos verificados.
 - **Nuevo servicio**: añadir en `solutions.ts`; aparece en Home, /services, /ai, llms.txt y JSON-LD.
 - `/tools` y `/resources` existen pero están fuera de navegación, sitemap y llms.txt, y con `noindex`.
+- `/privacidad` y `/aviso-legal` llevan `noindex` y no están en sitemap ni llms.txt (muestran NIF y domicilio del titular); siguen enlazadas desde el pie.
 
 ## Variables de entorno
 
