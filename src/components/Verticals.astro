@@ -5,14 +5,14 @@ import { href } from '../lib/url';
 <section class="section verticals-section" id="sectores" aria-labelledby="verticals-title">
   <div class="container">
     <p class="eyebrow">Sectores</p>
-    <h2 id="verticals-title">Especializados donde hay cita previa.</h2>
-    <p class="section-intro">Empezamos por clínicas dentales y la arquitectura está preparada para adaptarse a otros negocios con agenda.</p>
+    <h2 id="verticals-title">Para negocios locales<br />de todo tipo.</h2>
+    <p class="section-intro">Adaptamos el servicio a cada sector y a su forma de trabajar. Nuestro primer caso es una clínica dental, y trabajamos con cualquier negocio que quiera cuidar su parte digital.</p>
     <ul class="verticals-grid">
       {verticals.map((v) => (
         <li class:list={['vertical-card', { active: v.status === 'active' }]}>
           <h3>{v.page ? <a href={href(`/sectores/${v.slug}/`)}>{v.name}</a> : v.name}</h3>
           <p>{v.summary}</p>
-          <span class="vertical-status">{v.status === 'active' ? 'Primer sector' : 'En el horizonte'}</span>
+          <span class="vertical-status">{v.status === 'active' ? 'Primer caso' : 'Disponible'}</span>
         </li>
       ))}
     </ul>

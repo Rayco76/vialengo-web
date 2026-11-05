@@ -18,11 +18,11 @@ export const faqs: Faq[] = [
   },
   {
     q: '¿Para qué tipo de negocios es?',
-    a: 'Para negocios locales, sobre todo los que trabajan con cita previa. Dental es nuestro primer sector; fisioterapia, clínicas sanitarias, centros de estética y otros negocios con agenda son los siguientes.',
+    a: 'Para negocios locales de cualquier sector: clínicas, centros de estética, comercios, hostelería, despachos y más. Nuestro primer caso es una clínica dental, y adaptamos el servicio a cómo trabaja cada negocio.',
     home: true,
   },
   {
-    q: '¿Sustituye a mi equipo o a recepción?',
+    q: '¿Sustituye a mi equipo?',
     a: 'No. Automatiza las tareas repetitivas y ordena las conversaciones para que el equipo dedique su tiempo a atender mejor. Siempre hay una persona que puede continuar la conversación.',
     home: true,
   },

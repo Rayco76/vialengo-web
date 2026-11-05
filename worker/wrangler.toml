@@ -1,0 +1,18 @@
+# Worker del formulario de contacto de vialengo.com. Instrucciones en worker/README.md.
+name = "vialengo-form"
+main = "src/index.js"
+compatibility_date = "2025-10-01"
+workers_dev = true
+
+[vars]
+# Orígenes desde los que se acepta el formulario, separados por comas.
+ALLOWED_ORIGINS = "https://vialengo.com,https://www.vialengo.com"
+# Buzón que recibe las consultas.
+TO_EMAIL = "hola@vialengo.com"
+# Remitente: subdominio autenticado en Brevo (avisos.vialengo.com). No necesita buzón.
+SENDER_EMAIL = "web@avisos.vialengo.com"
+SENDER_NAME = "Web Vialengo"
+
+# Secretos (no van en este archivo):
+#   npx wrangler secret put BREVO_API_KEY
+#   npx wrangler secret put TURNSTILE_SECRET

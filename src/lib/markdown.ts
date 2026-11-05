@@ -53,7 +53,7 @@ ${founder.name} · ${founder.role}
 
 ## Sectores
 
-${verticals.map((v) => `- ${v.name}${v.status === 'planned' ? ' (preparado, sin página todavía)' : ''}: ${v.summary}`).join('\n')}
+${verticals.map((v) => `- ${v.name}${v.status === 'planned' ? ' (sin página propia todavía)' : ''}: ${v.summary}`).join('\n')}
 
 ## Casos y primeras señales
 
@@ -113,7 +113,7 @@ ${solutions.map((s) => `- **${s.title}**: ${s.short}`).join('\n')}
 
 ## Tipos de negocio
 
-${verticals.map((v) => `- **${v.name}** (${v.status === 'active' ? 'primer sector, primer proyecto en implementación' : 'previsto'}): ${v.summary}`).join('\n')}
+${verticals.map((v) => `- **${v.name}** (${v.status === 'active' ? 'primer caso, proyecto en implementación' : 'disponible'}): ${v.summary}`).join('\n')}
 
 ## Cómo funciona
 

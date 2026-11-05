@@ -1,4 +1,4 @@
-// Sectores (verticales). Dental es el primero; el resto están preparados pero sin página.
+// Sectores (verticales). Dental es el primer caso; el resto se atienden igual pero aún sin página propia.
 // Para publicar la página de un sector: `page: true` y rellenar `useCases`.
 // Se genera sola en /sectores/<slug>/ y entra en sitemap y llms.txt.
 
@@ -52,11 +52,18 @@ export const verticals: Vertical[] = [
     summary: 'Centros con reservas, recordatorios y mucha presencia en redes.',
   },
   {
-    slug: 'otros-negocios-con-agenda',
-    name: 'Otros negocios locales con agenda',
+    slug: 'comercio-hosteleria',
+    name: 'Comercios y hostelería',
     status: 'planned',
     page: false,
-    summary: 'Cualquier negocio de cita previa que quiera atender mejor y captar más.',
+    summary: 'Tiendas, bares y restaurantes que quieren que los encuentren en Google y en redes.',
+  },
+  {
+    slug: 'otros-negocios-locales',
+    name: 'Otros negocios locales',
+    status: 'planned',
+    page: false,
+    summary: 'Despachos, talleres, academias y cualquier negocio que quiera cuidar su parte digital.',
   },
 ];
 

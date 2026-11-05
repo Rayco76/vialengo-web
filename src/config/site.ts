@@ -35,7 +35,7 @@ export const siteConfig = {
   // Datos del titular para Aviso legal y Política de privacidad (LSSI-CE y RGPD).
   // Datos confirmados en ClinicOS_Work/Legal. `complete` se calcula solo.
   legal: {
-    holderName: "Rayco Rivero Gonzalez" as string | null, // nombre o razón social
+    holderName: "Rayco Rivero González" as string | null, // nombre o razón social
     taxId: "45725450R" as string | null, // NIF/CIF
     address: "Avenida Independencia 45, 28701 San Sebastián de los Reyes, Madrid" as string | null, // domicilio
     registry: null as string | null, // datos registrales, si es sociedad

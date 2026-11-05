@@ -63,7 +63,8 @@ const email = siteConfig.contact.email;
     const validate = (): boolean => {
       let firstInvalid: HTMLElement | null = null;
       form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input:not(.hp input), textarea').forEach((field) => {
-        const error = field.closest('label')!.querySelector<HTMLElement>('.field-error');
+        // Los campos sin etiqueta propia (p. ej. el token oculto de Turnstile) no se validan aquí.
+        const error = field.closest('label')?.querySelector<HTMLElement>('.field-error');
         if (!error) return;
         const message = field.validity.valid ? '' : messageFor(field);
         error.textContent = message;

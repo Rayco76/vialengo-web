@@ -15,7 +15,7 @@ export const GET: APIRoute = () => {
 
 > ${siteConfig.description}
 
-Servicio personalizado para negocios locales en ${siteConfig.country.name}, en remoto. Se adapta al sector, a las herramientas, a la agenda y al proceso de atención de cada negocio. Primer sector: clínicas dentales. No se publican precios. ${contactLine()}
+Servicio personalizado para negocios locales en ${siteConfig.country.name}, en remoto. Se adapta al sector, a las herramientas, a la agenda y al proceso de atención de cada negocio. Atiende negocios locales de cualquier sector; primer caso: una clínica dental. No se publican precios. ${contactLine()}
 
 ## Main
 

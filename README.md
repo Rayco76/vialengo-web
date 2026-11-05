@@ -45,6 +45,8 @@ campo trampa (honeypot) y Turnstile opcional.
   **y** los datos legales de `site.ts` están completos. Si no, se muestra un aviso de "no activo".
   Nunca se simula un envío en producción.
 - **Desarrollo** (`npm run dev`) sin endpoint: modo simulado, con aviso visible; valida pero no envía.
+- Receptor: Worker de Cloudflare en `worker/` (Turnstile + envío por Brevo a `hola@vialengo.com`).
+  Puesta en marcha en [worker/README.md](worker/README.md).
 - Contrato: `POST` con `FormData` (`name`, `business`, `email`, `phone`, `website`, `message`, `privacy`,
   y `cf-turnstile-response` si hay Turnstile) y cabecera `Accept: application/json`; cualquier 2xx es éxito.
 
@@ -76,7 +78,7 @@ falten el endpoint o los datos legales del titular.
 
 ## Confianza y caso piloto
 
-La home incorpora la forma de trabajar y una presentación de Rayco González. El caso
+La home incorpora la forma de trabajar y una presentación de Rayco Rivero González. El caso
 piloto conserva `/cases/dental-clinic-001/` y presenta proceso, galería pendiente y
 primeras señales de alcance con contexto. Ver [Contenido y autorizaciones](docs/contenido-y-autorizaciones.md)
 para sustituir la foto, añadir capturas reales y revisar la procedencia de las métricas.
@@ -84,13 +86,14 @@ para sustituir la foto, añadir capturas reales y revisar la procedencia de las 
 ## Política de privacidad
 
 `/privacidad/` contiene los 14 apartados del documento de
-`../ClinicOS_Work/Legal/POLITICA_DE_PRIVACIDAD.md`, actualizado el 2 de noviembre
+`../ClinicOS_Work/Legal/POLITICA_DE_PRIVACIDAD.md`, actualizado el 5 de noviembre
 de 2026. Los datos identificativos y el correo para ejercer derechos proceden de
 `src/config/site.ts`. Mantener el texto de la página y el documento de trabajo
 sincronizados cuando cambie la política. El aviso legal incluye las condiciones generales de uso del sitio.
 
-Los datos legales están configurados. El formulario sigue necesitando un endpoint
-para funcionar en producción; este cambio no configura ningún servicio de recepción.
+Los datos legales están configurados. El formulario se activa en producción al definir
+`PUBLIC_AUDIT_FORM_ENDPOINT` con la URL del Worker de `worker/`. Cloudflare y Brevo
+figuran como proveedores en el apartado 6 de la política.
 
 El correo único para contacto comercial, clientes y privacidad es
 `hola@vialengo.com`, definido una sola vez en `src/config/site.ts`. No se toma de

@@ -7,7 +7,7 @@ import { siteConfig } from '../config/site';
   <main id="contenido">
     <PageHeader eyebrow="Legal" title="Política de privacidad" intro="Vialengo — Soluciones digitales y automatización" />
     <div class="container prose">
-      <p><strong>Última actualización: 2 de noviembre de 2026</strong></p>
+      <p><strong>Última actualización: 5 de noviembre de 2026</strong></p>
       <section aria-labelledby="privacidad-1">
         <h2 id="privacidad-1">1. Responsable del tratamiento</h2>
         <p>En cumplimiento del Reglamento (UE) 2016/679, General de Protecci&#243;n de Datos (RGPD), y de la Ley Org&#225;nica 3/2018, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales (LOPDGDD), se informa de que el responsable del tratamiento de los datos personales recogidos directamente a trav&#233;s de este sitio web es:</p>
@@ -77,6 +77,8 @@ import { siteConfig } from '../config/site';
         <p>Vialengo utiliza proveedores tecnol&#243;gicos con funciones diferentes seg&#250;n el servicio:</p>
         <ul>
           <li>GitHub Pages, para publicar el sitio web de Vialengo. El proveedor puede registrar datos t&#233;cnicos de acceso, incluida la direcci&#243;n IP, por motivos de seguridad.</li>
+          <li>Cloudflare, para recibir los envíos del formulario de contacto mediante un servicio (Cloudflare Workers) que no los almacena, y para la verificación antispam Cloudflare Turnstile, que procesa datos técnicos del navegador y la dirección IP para distinguir personas de programas automáticos.</li>
+          <li>Brevo (Sendinblue SAS, Francia), para entregar por correo electrónico al buzón de Vialengo los datos enviados mediante el formulario de contacto.</li>
           <li>DonDominio, para alojar el buz&#243;n de correo del dominio vialengo.com y gestionar la recepci&#243;n y el env&#237;o de mensajes.</li>
           <li>Render, para ejecutar la aplicaci&#243;n ClinicGrowth y procesar las comunicaciones y operaciones de sus funcionalidades habilitadas.</li>
           <li>Aiven, para alojar la base de datos PostgreSQL de ClinicGrowth.</li>
@@ -142,6 +144,7 @@ import { siteConfig } from '../config/site';
       <section aria-labelledby="privacidad-12">
         <h2 id="privacidad-12">12. Cookies y tecnolog&#237;as similares</h2>
         <p>La versi&#243;n actual de este sitio no incorpora Google Analytics, el p&#237;xel de Meta ni cookies propias de publicidad o medici&#243;n de audiencia. Las fuentes se sirven desde el propio sitio.</p>
+        <p>El formulario de contacto utiliza Cloudflare Turnstile para evitar el envío de spam. Esta verificación es necesaria para la seguridad del servicio solicitado y no se utiliza con fines publicitarios ni de medición de audiencia.</p>
         <p>La aplicaci&#243;n puede generar eventos de interacci&#243;n dentro del navegador, sin enviarlos por s&#237; misma a un servicio externo de anal&#237;tica. El alojamiento puede mantener registros t&#233;cnicos de acceso para la seguridad del servicio, seg&#250;n lo indicado en el apartado 6.</p>
         <p>Si se habilitan funcionalidades que utilicen cookies o tecnolog&#237;as similares, se facilitar&#225; informaci&#243;n sobre las que se utilicen efectivamente. Cuando no est&#233;n exentas del requisito de consentimiento, se solicitar&#225; dicho consentimiento antes de activarlas.</p>
       </section>
